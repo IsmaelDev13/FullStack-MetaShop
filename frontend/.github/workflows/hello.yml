@@ -14,4 +14,3 @@ jobs:
           echo "Hello Ismael"
       - name: Tell me the time
         run: Date
-      - run: where ls
