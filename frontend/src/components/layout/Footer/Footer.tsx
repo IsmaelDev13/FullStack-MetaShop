@@ -4,7 +4,7 @@ import appstore from "./appstore1.png";
 
 interface FooterProps {}
 
-export const Footer: React.FC<FooterProps> = ({}) => {
+export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="flex justify-evenly items-center bg-slate-400 bottom-0 w-full fixed h-40">
       {/* Left */}
@@ -24,9 +24,9 @@ export const Footer: React.FC<FooterProps> = ({}) => {
       {/* Right */}
       <div>
         <h4>Follow Us</h4>
-        <a href="">Instagram</a>
-        <a href="">Facebook</a>
-        <a href="">LinkedIn</a>
+        <a>Instagram</a>
+        <a>Facebook</a>
+        <a>LinkedIn</a>
       </div>
     </footer>
   );
