@@ -11,4 +11,7 @@ jobs:
     steps:
       - name: Echo the message
         run: |
-          echo "Hola Ismael"
+          echo "Hello Ismael"
+      - name: Tell me the time
+        run: Date
+      - run: where ls
