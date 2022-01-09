@@ -8,7 +8,7 @@ interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = () => {
   return (
     <div className="flex justify-evenly top-0 sticky bg-neutral-400 p-8 ">
-      <div>MetaShop</div>
+      <Link to="/">MetaShop</Link>
       <div className="flex space-x-10">
         <h1 className="cursor-pointer font-">Home</h1>
         <Link to="/products" className="cursor-pointer">
@@ -20,8 +20,12 @@ export const Header: React.FC<HeaderProps> = () => {
 
       {/* Icons */}
       <div className="flex space-x-5">
-        <UserIcon className="h-6 w-6" />
-        <SearchIcon className="h-6 w-6" />
+        <Link to="/login">
+          <UserIcon className="h-6 w-6" />
+        </Link>
+        <Link to="/search">
+          <SearchIcon className="h-6 w-6" />
+        </Link>
         <ShoppingBagIcon className="h-6 w-6" />
       </div>
     </div>

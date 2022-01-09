@@ -1,22 +1,22 @@
 import React, { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Metadata } from "../layout/Metadata";
 
-interface SearchProps {
-  history: any;
-}
-
-export const Search: React.FC<SearchProps> = ({ history }) => {
+export const Search: React.FC = () => {
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
 
-  const searchSubmitHandler = (e: { preventDefault: () => void }) => {
+  const searchSubmitHandler = (e: any) => {
     e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/products/${keyword}`);
+      navigate(`/products/${keyword}`);
     } else {
-      history.push("/products");
+      navigate("/products");
     }
   };
   return (
     <Fragment>
+      <Metadata title="MetaShop | Search A Product... " />
       <form onSubmit={searchSubmitHandler}>
         <input
           type="text"
@@ -28,3 +28,6 @@ export const Search: React.FC<SearchProps> = ({ history }) => {
     </Fragment>
   );
 };
+function useHistory() {
+  throw new Error("Function not implemented.");
+}

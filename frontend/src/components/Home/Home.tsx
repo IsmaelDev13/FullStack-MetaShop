@@ -11,7 +11,7 @@ interface HomeProps {}
 export const Home: React.FC<HomeProps> = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, products, productsCount } = useSelector(
+  const { loading, error, products } = useSelector(
     (state: any) => state.products
   );
   useEffect(() => {
