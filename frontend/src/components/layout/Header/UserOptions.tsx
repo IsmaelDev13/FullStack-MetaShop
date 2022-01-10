@@ -24,7 +24,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ user }) => {
 
   const navigate = useNavigate();
   const dashboard = () => {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   };
   const orders = () => {
     navigate("/orders");

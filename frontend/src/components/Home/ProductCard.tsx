@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
+import { Rating } from "@mui/material";
 
 interface ProductProps {
   product: {
@@ -14,13 +14,11 @@ interface ProductProps {
 }
 
 export const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
+  const options: any = {
+    size: "large",
     value: product.ratings,
-    isHalf: true,
+    readOnly: true,
+    precision: 0.5,
   };
   return (
     <Link
@@ -30,7 +28,7 @@ export const ProductCard: React.FC<ProductProps> = ({ product }) => {
       <img className="h-40" src={product.images[0].url} alt={product.name} />
       <p>{product.name}</p>
       <div>
-        <ReactStars {...options} />
+        <Rating {...options} />
         <span>({product.numOfReviews} Reviews)</span>
       </div>
       <span>{`$${product.price}`}</span>

@@ -1,6 +1,13 @@
 import "./App.css";
 import { Header } from "./components/layout/Header/Header";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import { Footer } from "./components/layout/Footer/Footer";
 import { Home } from "./components/Home/Home";
 import ProductDetails from "./components/Product/ProductDetails";
@@ -20,23 +27,26 @@ import { Shipping } from "./components/Cart/Shipping";
 import { ConfirmOrder } from "./components/Cart/ConfirmOrder";
 import axios from "axios";
 import { Payment } from "./components/Cart/Payment";
-import {Elements } from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js'
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { OrderSuccess } from "./components/Cart/OrderSuccess";
+import { MyOrders } from "./components/Order/MyOrders";
+import { OrderDetails } from "./components/Order/OrderDetails";
+import { Dashboard } from "./components/admin/Dashboard";
 
 function App() {
   const { isAuthenticated, user, loading } = useSelector((state) => state.user);
-  const [stripeApiKey, setStripeApiKey] = useState('');
+  const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey(){
-    const {data}  = await axios.get('/api/v1/stripeapikey')
-    setStripeApiKey(data.stripeApiKey)
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
   }
-
 
   useEffect(() => {
     store.dispatch(loadUser());
 
-    getStripeApiKey()
+    getStripeApiKey();
   }, []);
 
   return (
@@ -68,19 +78,21 @@ function App() {
           path="/order/confirm"
           element={isAuthenticated && !loading && <ConfirmOrder />}
         />
+        <Route path="/success" element={isAuthenticated && <OrderSuccess />} />
+        <Route exact path="/orders" element={isAuthenticated && <MyOrders />} />
+        <Route
+          exact
+          path="/order/:id"
+          element={isAuthenticated && <OrderDetails />}
+        />
+        <Route exact path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
-        {stripeApiKey && (
-
-            <Elements stripe={loadStripe(stripeApiKey)}>
-              <Link to='/process/payment'/>
-              <Payment/>
-
-            {/* <Route 
-              path="/process/payment"
-              element={isAuthenticated && !loading && <Payment />}
-              /> */}
-            </Elements>
-          )}
+      {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <Link to="/process/payment" />
+          <Payment />
+        </Elements>
+      )}
       {/* <Footer /> */}
     </Router>
   );
