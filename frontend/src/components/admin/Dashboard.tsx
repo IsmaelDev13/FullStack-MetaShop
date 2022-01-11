@@ -4,10 +4,38 @@ import { Sidebar } from "./Sidebar";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut, Line } from "react-chartjs-2";
+import { useSelector, useDispatch } from "react-redux";
+import { useAlert } from "react-alert";
+import { useEffect } from "react";
+import { clearErrors, getAdminProduct } from "../../actions/productAction";
+import { getAllOrders } from "../../actions/orderAction";
+import { getAllUsers } from "../../actions/userAction";
 
 interface DashboardProps {}
 
 export const Dashboard: React.FC<DashboardProps> = ({}) => {
+  const alert = useAlert();
+  const dispatch = useDispatch();
+  const { products } = useSelector((state: any) => state.products);
+  const { orders } = useSelector((state: any) => state.allOrders);
+  const { users } = useSelector((state: any) => state.allUsers);
+  let outOfStock = 0;
+
+  products &&
+    products.forEach((item: any) => {
+      if (item.Stock === 0) {
+        outOfStock += 1;
+      }
+    });
+
+  useEffect(() => {
+    dispatch(getAdminProduct());
+
+    dispatch(getAllOrders());
+
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
   const lineState: any = {
     labels: ["Initial Amount", "Amount Earned"],
     datasets: [
@@ -25,7 +53,7 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
       {
         backgroundColor: ["#00A6B4", "#6800B4"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
-        data: [2, 10],
+        data: [outOfStock, products.length - outOfStock],
       },
     ],
   };
@@ -43,28 +71,24 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
           <div>
             <Link to="/admin/products">
               <p>Product</p>
-              <p>50</p>
+              <p>{products && products.length}</p>
             </Link>
           </div>
           <div>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </Link>
           </div>
           <div>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>2</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>
-        <div>
-          <Line data={lineState} />
-        </div>
-        <div>
-          <Doughnut data={doughnutState} />
-        </div>
+        <div>{/* <Line data={lineState} /> */}</div>
+        <div>{/* <Doughnut data={doughnutState} /> */}</div>
       </div>{" "}
     </div>
   );

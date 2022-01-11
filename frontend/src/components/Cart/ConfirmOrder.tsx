@@ -32,6 +32,7 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({}) => {
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
     navigate("/process/payment");
   };
+
   return (
     <Fragment>
       <Metadata title="Confirm Order" />

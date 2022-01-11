@@ -10,9 +10,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 
-interface SidebarProps {}
-
-export const Sidebar: React.FC<SidebarProps> = ({}) => {
+export const Sidebar = ({}) => {
   return (
     <div>
       <Link to="/">
@@ -23,7 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({}) => {
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-      <Link to="#">
+      <Link>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}
