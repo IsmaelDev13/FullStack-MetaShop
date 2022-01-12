@@ -9,11 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import { Metadata } from "../layout/Metadata";
 
-interface UpdateProfileProps {}
+interface UpdateProfileProps {
+  history: any;
+}
 
-export const UpdateProfile: React.FC<UpdateProfileProps> = ({}) => {
+export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { user } = useSelector((state: any) => state.user);
   const { error, isUpdated, loading } = useSelector(
@@ -60,13 +61,13 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({}) => {
     if (isUpdated) {
       alert.success("Profile Updated Successfully");
       dispatch(loadUser());
-      navigate("/account");
+      history.push("/account");
 
       dispatch({
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, alert, navigate, user, isUpdated]);
+  }, [dispatch, error, alert, history, user, isUpdated]);
   return (
     <Fragment>
       {loading ? (

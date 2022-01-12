@@ -14,26 +14,26 @@ import { useDispatch, useSelector } from "react-redux";
 
 interface UserOptionsProps {
   user: any;
+  history: any;
 }
 
-export const UserOptions: React.FC<UserOptionsProps> = ({ user }) => {
+export const UserOptions: React.FC<UserOptionsProps> = ({ user, history }) => {
   const { cartItems } = useSelector((state: any) => state.cart);
   const [open, setOpen] = useState(false);
   const alert = useAlert();
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
   const dashboard = () => {
-    navigate("/admin/dashboard");
+    history.push("/admin/dashboard");
   };
   const orders = () => {
-    navigate("/orders");
+    history.push("/orders");
   };
   const account = () => {
-    navigate("/account");
+    history.push("/account");
   };
   const cart = () => {
-    navigate("/cart");
+    history.push("/cart");
   };
 
   const logout = () => {

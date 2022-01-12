@@ -4,18 +4,19 @@ import { Metadata } from "../layout/Metadata";
 import { useSelector } from "react-redux";
 import { Loader } from "../layout/Loader/Loader";
 
-interface ProfileProps {}
+interface ProfileProps {
+  history: any;
+}
 
-export const Profile: React.FC<ProfileProps> = ({}) => {
-  const navigate = useNavigate();
+export const Profile: React.FC<ProfileProps> = ({ history }) => {
   const { user, loading, isAuthenticated } = useSelector(
     (state: any) => state.user
   );
   useEffect(() => {
     if (isAuthenticated === false) {
-      navigate("/login");
+      history.push("/login");
     }
-  }, [navigate, isAuthenticated]);
+  }, [history, isAuthenticated]);
   return (
     <Fragment>
       {loading ? (

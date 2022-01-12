@@ -16,10 +16,11 @@ import {
 } from "../../actions/userAction";
 import { Loader } from "../layout/Loader/Loader";
 
-interface NewProductProps {}
+interface NewProductProps {
+  history: any;
+}
 
-export const UpdateUser: React.FC<NewProductProps> = ({}) => {
-  const navigate = useNavigate();
+export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { id } = useParams();
@@ -57,7 +58,7 @@ export const UpdateUser: React.FC<NewProductProps> = ({}) => {
     }
     if (isUpdated) {
       alert.success("User Updated Successfully");
-      navigate("/admin/users");
+      history.push("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
   }, [dispatch, alert, error, isUpdated, updateError, user, userId]);

@@ -1,14 +1,6 @@
 import "./App.css";
 import { Header } from "./components/layout/Header/Header";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-  Link,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Footer } from "./components/layout/Footer/Footer";
 import { Home } from "./components/Home/Home";
 import ProductDetails from "./components/Product/ProductDetails";
@@ -42,13 +34,12 @@ import { ProcessOrder } from "./components/admin/ProcessOrder";
 import { UsersList } from "./components/admin/UserList";
 import { UpdateUser } from "./components/admin/UpdateUser";
 import { ProductReviews } from "./components/admin/ProductReviews";
+import ProtectedRoute from "./components/Route/ProtectedRoute";
+import { NotFound } from "./components/layout/NotFound/NotFound";
 
 function App() {
   const { isAuthenticated, user, loading } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
-  const location = useLocation();
-  const paymentLocation = location.pathname === "/process/payment";
-  console.log(paymentLocation);
 
   async function getStripeApiKey() {
     const { data } = await axios.get("/api/v1/stripeapikey");
@@ -65,56 +56,61 @@ function App() {
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:keyword" element={<Products />} />
-        <Route path="/search" element={<Search />} />
-        <Route
-          path="/account"
-          element={isAuthenticated && !loading && <Profile />}
-        />
-        <Route
-          path="/me/update"
-          element={isAuthenticated && <UpdateProfile />}
-        />
-        <Route
+
+      {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <Payment />
+          <ProtectedRoute exact path="/process/payment" component={Payment} />
+        </Elements>
+      )}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product/:id" component={ProductDetails} />
+        <Route exact path="/products" component={Products} />
+        <Route path="/products/:keyword" component={Products} />
+        <Route exact path="/search" component={Search} />
+        <ProtectedRoute exact path="/account" component={Profile} />
+        <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+        <ProtectedRoute
+          exact
           path="/password/update"
-          element={isAuthenticated && <UpdatePassword />}
+          component={UpdatePassword}
         />
-        <Route path="/login" element={<LoginSignIn />} />
-        <Route path="/cart" element={isAuthenticated && <Cart />} />
-        <Route path="/shipping" element={isAuthenticated && <Shipping />} />
+        <Route exact path="/login" component={LoginSignIn} />
+        <Route exact path="/cart" component={Cart} />
+        <ProtectedRoute exact path="/shipping" component={Shipping} />
+        <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
+        <ProtectedRoute exact path="/success" component={OrderSuccess} />
+        <ProtectedRoute exact path="/orders" component={MyOrders} />
+        <Route exact path="/order/:id" component={OrderDetails} />
+        <ProtectedRoute exact path="/admin/dashboard" omponent={Dashboard} />
+        <ProtectedRoute exact path="/admin/products" component={ProductList} />
+        <ProtectedRoute exact path="/admin/product" component={NewProduct} />
+        <ProtectedRoute
+          exact
+          path="/admin/product/:id"
+          component={UpdateProduct}
+        />
+        <ProtectedRoute exact path="/admin/orders" component={OrdersList} />
+        <ProtectedRoute
+          exact
+          path="/admin/order/:id"
+          component={ProcessOrder}
+        />
+        <ProtectedRoute exact path="/admin/users" component={UsersList} />
+        <ProtectedRoute exact path="/admin/user/:id" component={UpdateUser} />
+        <ProtectedRoute
+          exact
+          path="/admin/reviews"
+          component={ProductReviews}
+        />
+
         <Route
-          path="/order/confirm"
-          element={isAuthenticated && !loading && <ConfirmOrder />}
+          component={
+            window.location.pathname === "/process/payment" ? null : NotFound
+          }
         />
-        <Route path="/success" element={isAuthenticated && <OrderSuccess />} />
-        <Route path="/orders" element={isAuthenticated && <MyOrders />} />
-        <Route
-          path="/order/:id"
-          element={isAuthenticated && <OrderDetails />}
-        />
-        <Route
-          path="/admin/dashboard"
-          element={isAuthenticated && <Dashboard />}
-        />
-        <Route path="/admin/products" element={<ProductList />} />
-        <Route path="/admin/product" element={<NewProduct />} />
-        <Route path="/admin/product/:id" element={<UpdateProduct />} />
-        <Route path="/admin/orders" element={<OrdersList />} />
-        <Route path="/admin/order/:id" element={<ProcessOrder />} />
-        <Route path="/admin/users" element={<UsersList />} />
-        <Route path="/admin/user/:id" element={<UpdateUser />} />
-        <Route path="/admin/reviews" element={<ProductReviews />} />
-        {stripeApiKey && paymentLocation && (
-          <Elements stripe={loadStripe(stripeApiKey)}>
-            <Payment />
-            <Link to="/process/payment" />
-          </Elements>
-        )}
-      </Routes>
+      </Switch>
 
       {/* <Footer /> */}
     </Router>

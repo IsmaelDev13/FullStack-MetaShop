@@ -15,11 +15,12 @@ import {
 } from "../../actions/productAction";
 import EditIcon from "@mui/icons-material/Edit";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
-interface ProductListProps {}
+interface ProductListProps {
+  history: any;
+}
 
-export const ProductReviews: React.FC<ProductListProps> = ({}) => {
+export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { error: deleteError, isDeleted } = useSelector(
     (state: any) => state.review
@@ -54,7 +55,7 @@ export const ProductReviews: React.FC<ProductListProps> = ({}) => {
     }
     if (isDeleted) {
       alert.success("Review Deleted Successfully");
-      navigate("/admin/reviews");
+      history.push("/admin/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
   }, [dispatch, alert, error, deleteError, isDeleted, productId]);

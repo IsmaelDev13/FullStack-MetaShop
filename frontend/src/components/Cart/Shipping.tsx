@@ -15,11 +15,12 @@ import { useNavigate } from "react-router-dom";
 import PinDrop from "@mui/icons-material/PinDrop";
 import axios from "axios";
 
-interface ShippingProps {}
+interface ShippingProps {
+  history: any;
+}
 
-export const Shipping: React.FC<ShippingProps> = ({}) => {
+export const Shipping: React.FC<ShippingProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
 
   const { shippingInfo } = useSelector((state: any) => state.cart);
@@ -29,7 +30,6 @@ export const Shipping: React.FC<ShippingProps> = ({}) => {
   const [country, setCountry] = useState(shippingInfo.country);
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
-
 
   const shippingSubmit = (e: any) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ export const Shipping: React.FC<ShippingProps> = ({}) => {
     dispatch(
       saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     );
-    navigate("/order/confirm");
+    history.push("/order/confirm");
   };
   return (
     <Fragment>

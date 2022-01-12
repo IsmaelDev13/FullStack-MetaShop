@@ -12,11 +12,12 @@ import { Metadata } from "../layout/Metadata";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockIcon from "@mui/icons-material/Lock";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
-interface UpdatePasswordProps {}
+interface UpdatePasswordProps {
+  history: any;
+}
 
-export const UpdatePassword: React.FC<UpdatePasswordProps> = ({}) => {
+export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { error, isUpdated, loading } = useSelector(
     (state: any) => state.profile
@@ -44,13 +45,13 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({}) => {
     }
     if (isUpdated) {
       alert.success("Profile Updated Successfully");
-      navigate("/account");
+      history.push("/account");
 
       dispatch({
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [dispatch, error, alert, navigate, isUpdated]);
+  }, [dispatch, error, alert, history, isUpdated]);
   return (
     <Fragment>
       {loading ? (

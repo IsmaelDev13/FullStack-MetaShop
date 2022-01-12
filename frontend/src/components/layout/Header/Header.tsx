@@ -10,12 +10,12 @@ export const Header: React.FC<HeaderProps> = () => {
     <div className="flex justify-evenly top-0 sticky bg-neutral-400 p-8 ">
       <Link to="/">MetaShop</Link>
       <div className="flex space-x-10">
-        <h1 className="cursor-pointer font-">Home</h1>
+        <h1 className="cursor-pointer font-sans ">Home</h1>
         <Link to="/products" className="cursor-pointer">
           Products
         </Link>
-        <h1 className="cursor-pointer">Contact</h1>
-        <h1 className="cursor-pointer">About</h1>
+        <h1 className="cursor-pointer font-sans">Contact</h1>
+        <h1 className="cursor-pointer font-sans">About</h1>
       </div>
 
       {/* Icons */}

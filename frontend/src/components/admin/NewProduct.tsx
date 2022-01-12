@@ -22,10 +22,11 @@ const categories = [
   "SmartPhones",
 ];
 
-interface NewProductProps {}
+interface NewProductProps {
+  history: any;
+}
 
-export const NewProduct: React.FC<NewProductProps> = ({}) => {
-  const navigate = useNavigate();
+export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -47,7 +48,7 @@ export const NewProduct: React.FC<NewProductProps> = ({}) => {
     }
     if (success) {
       alert.success("Product Created Successfully");
-      navigate("/admin/dashboard");
+      history.push("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
   }, [dispatch, alert, error, success]);

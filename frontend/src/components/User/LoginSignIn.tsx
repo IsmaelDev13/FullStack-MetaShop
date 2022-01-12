@@ -6,13 +6,14 @@ import FaceIcon from "@mui/icons-material/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-interface LoginSignInProps {}
+interface LoginSignInProps {
+  history: any;
+}
 
-export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
+export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
   const loginTab = useRef(null);
@@ -78,7 +79,7 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate(redirect);
+      history.push(redirect);
     }
   }, [dispatch, alert, error, isAuthenticated, redirect]);
 
@@ -101,24 +102,46 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
         <Loader />
       ) : (
         <Fragment>
-          <div>
-            <div>
-              <div>
-                <div>
+          <div className="grid place-content-center font-sans border-b-2 p-10 ">
+            <div className="">
+              <div className="">
+                <div className="font-sans flex items-center text-center w-full justify-evenly p-4 ">
                   <p
-                    className={clickedLogin ? "" : ""}
+                    className={
+                      clickedLogin
+                        ? "bg-black text-white font-bold cursor-pointer border-2 border-black p-2 w-1/2"
+                        : "bg-white text-black cursor-pointer border-black border-2 p-2 w-1/2"
+                    }
                     onClick={(e) => switchTabs(e, "login")}
                   >
                     LOGIN
                   </p>
-                  <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
+                  <p
+                    className={
+                      clickedRegister
+                        ? "bg-black text-white font-bold cursor-pointer border-2 border-black p-2 w-1/2"
+                        : "border-black border-2 w-1/2 bg-white text-black p-2 cursor-pointer"
+                    }
+                    onClick={(e) => switchTabs(e, "register")}
+                  >
+                    REGISTER
+                  </p>
                 </div>
                 <button ref={switcherTab}></button>
               </div>
-              <form ref={loginTab} onSubmit={loginSubmit}>
-                <div>
-                  <MailOutlineIcon />
+              <form
+                ref={loginTab}
+                onSubmit={loginSubmit}
+                className={
+                  clickedLogin
+                    ? "transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+                    : "transition-x-full  transform duration-300 blur-3xl ease-in"
+                }
+              >
+                <div className="border-2 border-gray-500  hover:border-black p-4 ">
+                  <MailOutlineIcon className="mx-4" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="email"
                     placeholder="Email"
                     required
@@ -126,9 +149,10 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
                     onChange={(e) => setLoginEmail(e.target.value)}
                   />
                 </div>
-                <div>
-                  <LockOpenIcon />
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <LockOpenIcon className="mx-4" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="password"
                     placeholder="Password"
                     required
@@ -136,16 +160,26 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
                     onChange={(e) => setLoginPassword(e.target.value)}
                   />
                 </div>
-                <input type="submit" value="Login" />
+                <input
+                  className="bg-black text-white w-full p-3 font-sans font-bold hover:bg-gray-700 cursor-pointer "
+                  type="submit"
+                  value="Login"
+                />
               </form>
               <form
+                className={
+                  clickedRegister
+                    ? "transition-all -translate-y-40 bg-white focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg rounded-r-xl p-5"
+                    : "hidden"
+                }
                 ref={registerTab}
                 encType="multipart/form-data"
                 onSubmit={registerSubmit}
               >
-                <div>
-                  <FaceIcon />
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <FaceIcon className="mx-2" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="text"
                     placeholder="Name"
                     required
@@ -154,9 +188,10 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
                     onChange={registerDataChange}
                   />
                 </div>
-                <div>
-                  <MailOutlineIcon />
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <MailOutlineIcon className="mx-2" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="email"
                     placeholder="Email"
                     required
@@ -165,9 +200,10 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
                     onChange={registerDataChange}
                   />
                 </div>
-                <div>
-                  <LockOpenIcon />
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <LockOpenIcon className="mx-2" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="password"
                     placeholder="Password"
                     required
@@ -176,16 +212,21 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({}) => {
                     onChange={registerDataChange}
                   />
                 </div>
-                <div>
+                <div className="border-2 border-gray-500  hover:border-black p-4">
                   <img src="" alt="" />
                   <input
+                    className="focus-within:outline-none flex-grow"
                     type="file"
                     name="avatar"
                     accept="image/*"
                     onChange={registerDataChange}
                   />
                 </div>
-                <input type="submit" value="Register" />
+                <input
+                  className="bg-black text-white w-full p-3 font-sans font-bold hover:bg-gray-700 cursor-pointer "
+                  type="submit"
+                  value="Register"
+                />
               </form>
             </div>
           </div>

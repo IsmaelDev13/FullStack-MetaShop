@@ -26,10 +26,11 @@ const categories = [
   "SmartPhones",
 ];
 
-interface NewProductProps {}
+interface NewProductProps {
+  history: any;
+}
 
-export const UpdateProduct: React.FC<NewProductProps> = ({}) => {
-  const navigate = useNavigate();
+export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { id } = useParams();
@@ -73,7 +74,7 @@ export const UpdateProduct: React.FC<NewProductProps> = ({}) => {
     }
     if (isUpdated) {
       alert.success("Product Updated Successfully");
-      navigate("/admin/products");
+      history.push("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [dispatch, alert, error, isUpdated, productId, product, updateError]);

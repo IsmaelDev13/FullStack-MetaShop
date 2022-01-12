@@ -12,11 +12,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
-interface ProductListProps {}
+interface ProductListProps {
+  history: any;
+}
 
-export const UsersList: React.FC<ProductListProps> = ({}) => {
+export const UsersList: React.FC<ProductListProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { error, users } = useSelector((state: any) => state.allUsers);
 
@@ -41,7 +42,7 @@ export const UsersList: React.FC<ProductListProps> = ({}) => {
     }
     if (isDeleted) {
       alert.success(message);
-      navigate("/admin/users");
+      history.push("/admin/users");
       dispatch({ type: DELETE_USER_RESET });
     }
     dispatch(getAllUsers());

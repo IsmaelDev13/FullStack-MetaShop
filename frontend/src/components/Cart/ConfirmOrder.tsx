@@ -5,10 +5,11 @@ import { Metadata } from "../layout/Metadata";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 
-interface ConfirmOrderProps {}
+interface ConfirmOrderProps {
+  history: any;
+}
 
-export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({}) => {
-  const navigate = useNavigate();
+export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state: any) => state.cart);
   const { user } = useSelector((state: any) => state.user);
 
@@ -30,7 +31,7 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({}) => {
       totalPrice,
     };
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    navigate("/process/payment");
+    history.push("/process/payment");
   };
 
   return (

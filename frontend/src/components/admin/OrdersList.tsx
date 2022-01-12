@@ -14,11 +14,12 @@ import {
   getAllOrders,
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderContants";
-interface ProductListProps {}
+interface ProductListProps {
+  history: any;
+}
 
-export const OrdersList: React.FC<ProductListProps> = ({}) => {
+export const OrdersList: React.FC<ProductListProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { error, orders } = useSelector((state: any) => state.allOrders);
 
@@ -41,7 +42,7 @@ export const OrdersList: React.FC<ProductListProps> = ({}) => {
     }
     if (isDeleted) {
       alert.success("Order Delete Successfully");
-      navigate("/admin/orders");
+      history.push("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
     dispatch(getAllOrders());

@@ -18,11 +18,10 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useLocation, useNavigate } from "react-router-dom";
 import { clearErrors, createOrder } from "../../actions/orderAction";
 
-export const Payment = ({}) => {
+export const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo") || "{}");
   const [showPayment, setShowPayment] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const alert = useAlert();
   const stripe = useStripe();
@@ -100,7 +99,7 @@ export const Payment = ({}) => {
             status: result.paymentIntent.status,
           };
           dispatch(createOrder(order));
-          navigate("/success");
+          history.push("/success");
         } else {
           alert.error("There's some issue while processing the payment");
         }

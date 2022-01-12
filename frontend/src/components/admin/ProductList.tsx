@@ -14,11 +14,12 @@ import {
 } from "../../actions/productAction";
 import EditIcon from "@mui/icons-material/Edit";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
-interface ProductListProps {}
+interface ProductListProps {
+  history: any;
+}
 
-export const ProductList: React.FC<ProductListProps> = ({}) => {
+export const ProductList: React.FC<ProductListProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alert = useAlert();
   const { error, products } = useSelector((state: any) => state.products);
 
@@ -41,7 +42,7 @@ export const ProductList: React.FC<ProductListProps> = ({}) => {
     }
     if (isDeleted) {
       alert.success("Product Delete Successfully");
-      navigate("/admin/dashboard");
+      history.push("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
     dispatch(getAdminProduct());

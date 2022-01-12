@@ -6,11 +6,12 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
-interface CartProps {}
+interface CartProps {
+  history: any;
+}
 
-export const Cart: React.FC<CartProps> = ({}) => {
+export const Cart: React.FC<CartProps> = ({ history }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { cartItems } = useSelector((state: any) => state.cart);
 
   const increaseQuantity = (id: string, quantity: number, stock: number) => {
@@ -33,7 +34,7 @@ export const Cart: React.FC<CartProps> = ({}) => {
     dispatch(removeItemsFromCart(id));
   };
   const checkoutHandler = () => {
-    navigate("/shipping");
+    history.push("/shipping");
   };
 
   return (
