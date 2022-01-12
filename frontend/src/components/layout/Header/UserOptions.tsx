@@ -7,7 +7,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logoutUser } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,8 @@ interface UserOptionsProps {
   history: any;
 }
 
-export const UserOptions: React.FC<UserOptionsProps> = ({ user, history }) => {
+export const UserOptions: React.FC<UserOptionsProps> = ({ user }) => {
+  const history = useHistory();
   const { cartItems } = useSelector((state: any) => state.cart);
   const [open, setOpen] = useState(false);
   const alert = useAlert();
@@ -67,12 +68,14 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ user, history }) => {
       {/* <Backdrop open={open} /> */}
       <SpeedDial
         ariaLabel="SpeedDial"
+        className="fixed top-3 right-3"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
         direction="down"
         icon={
           <img
+            className="rounded-full w-[56px] h-[56px]"
             src={
               user.avatar.url
                 ? user.avatar.url

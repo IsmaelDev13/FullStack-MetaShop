@@ -75,16 +75,20 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
       ) : (
         <Fragment>
           <Metadata title="Update Profile" />
-          <div>
+          <div className=" grid place-items-center mx-auto bg-gray-100 p-20 ">
             <div>
-              <h2>Update Profile</h2>
               <form
+                className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
                 encType="multipart/form-data"
                 onSubmit={updateProfileSubmit}
               >
-                <div>
-                  <FaceIcon />
+                <h2 className="font-bold antialiased font-sans text-2xl">
+                  Update Profile
+                </h2>
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <FaceIcon className="mx-4" />
                   <input
+                    className="focus-within:outline-none flex-grow bg-transparent"
                     type="text"
                     placeholder="Name"
                     required
@@ -93,9 +97,10 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div>
-                  <MailOutlineIcon />
+                <div className="border-2 border-gray-500  hover:border-black p-4">
+                  <MailOutlineIcon className="mx-4" />
                   <input
+                    className="focus-within:outline-none flex-grow bg-transparent"
                     type="email"
                     placeholder="Email"
                     required
@@ -105,8 +110,12 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
                   />
                 </div>
 
-                <div>
-                  <img src={avatarPreview} alt="Avatar Preview" />
+                <div className="flex items-center flex-row space-x-2">
+                  <img
+                    className="w-20 h-20 rounded-full object-cover"
+                    src={avatarPreview}
+                    alt="Avatar Preview"
+                  />
                   <input
                     type="file"
                     name="avatar"
@@ -114,7 +123,11 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
                     onChange={updateProfileDataChange}
                   />
                 </div>
-                <input type="submit" value="updateProfile" />
+                <input
+                  className="bg-black text-white w-full p-3 font-sans font-bold hover:bg-gray-700 cursor-pointer rounded-sm shadow-md "
+                  type="submit"
+                  value="Update Profile"
+                />
               </form>
             </div>
           </div>

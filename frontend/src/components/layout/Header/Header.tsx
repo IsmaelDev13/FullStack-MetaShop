@@ -7,15 +7,19 @@ interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
   return (
-    <div className="flex justify-evenly top-0 sticky bg-neutral-400 p-8 ">
+    <div className="flex justify-evenly top-0 sticky bg-white border-b-2 p-8 font-sans uppercase  ">
       <Link to="/">MetaShop</Link>
       <div className="flex space-x-10">
-        <h1 className="cursor-pointer font-sans ">Home</h1>
+        <Link to="/">
+          <h1 className="cursor-pointer transition transform duration-200 ease-in-out hover:text-gray-800 ">
+            Home
+          </h1>
+        </Link>
         <Link to="/products" className="cursor-pointer">
           Products
         </Link>
-        <h1 className="cursor-pointer font-sans">Contact</h1>
-        <h1 className="cursor-pointer font-sans">About</h1>
+        <h1 className="cursor-pointer ">Contact</h1>
+        <h1 className="cursor-pointer ">About</h1>
       </div>
 
       {/* Icons */}
