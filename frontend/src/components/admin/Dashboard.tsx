@@ -1,8 +1,18 @@
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
-import { CategoryScale } from "chart.js";
-import Chart from "chart.js/auto";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+import { Chart } from "react-chartjs-2";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
@@ -11,9 +21,20 @@ import { clearErrors, getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction";
 import { getAllUsers } from "../../actions/userAction";
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  ArcElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 interface DashboardProps {}
 
-export const Dashboard: React.FC<DashboardProps> = ({}) => {
+const Dashboard: React.FC<DashboardProps> = ({}) => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { products } = useSelector((state: any) => state.products);
@@ -26,6 +47,12 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
       if (item.Stock === 0) {
         outOfStock += 1;
       }
+    });
+
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item: any) => {
+      totalAmount += item.totalPrice;
     });
 
   useEffect(() => {
@@ -58,38 +85,59 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
     ],
   };
   return (
-    <div>
+    <div className="">
       <Sidebar />
-      <div>
-        <Typography component="h1">Dashboard</Typography>
-        <div>
-          <div>
-            <p>
-              Total Amount <br /> $200
+      <div className="flex-col max-w-screen-xl mx-auto">
+        <h1 className="p-6 text-3xl italic font-bold">Dashboard</h1>
+        <div className="flex flex-col md:flex-row items-center justify-center space-x-20">
+          <div className="flex text-center  ">
+            <p className="text-xl font-semibold">
+              Total Amount{" "}
+              <p className="my-10 bg-white border hover:border-x-black hover:border-x-2 rounded-md shadow-lg hover:bg-gray-200 px-10 py-4">
+                {" "}
+                ${totalAmount}{" "}
+              </p>
             </p>
           </div>
           <div>
             <Link to="/admin/products">
-              <p>Product</p>
-              <p>{products && products.length}</p>
+              <p className="text-xl font-semibold border-l-2 rounded-l-md p-2 ">
+                Product
+              </p>
+              <p className="my-10 bg-white border hover:border-l-black hover:border-l-2 rounded-md shadow-lg hover:bg-gray-200 px-10 py-4">
+                {products && products.length}
+              </p>
             </Link>
           </div>
           <div>
             <Link to="/admin/orders">
-              <p>Orders</p>
-              <p>{orders && orders.length}</p>
+              <p className="text-xl font-semibold border-b-2 rounded-b-md p-2">
+                Orders
+              </p>
+              <p className="my-10 bg-white border hover:border-b-black hover:border-b-2 rounded-md shadow-lg hover:bg-gray-200 px-10 py-4">
+                {orders && orders.length}
+              </p>
             </Link>
           </div>
           <div>
             <Link to="/admin/users">
-              <p>Users</p>
-              <p>{users && users.length}</p>
+              <p className="text-xl font-semibold  border-r-2 rounded-r-md p-2">
+                Users
+              </p>
+              <p className="my-10 bg-white border hover:border-r-black hover:border-r-2 rounded-md shadow-lg hover:bg-gray-200 px-10 py-4 ">
+                {users && users.length}
+              </p>
             </Link>
           </div>
         </div>
-        <div>{/* <Line data={lineState} /> */}</div>
-        <div>{/* <Doughnut data={doughnutState} /> */}</div>
+        <div>
+          <Line data={lineState} />
+        </div>
+        <div>
+          <Doughnut data={doughnutState} />
+        </div>
       </div>{" "}
     </div>
   );
 };
+export default Dashboard;

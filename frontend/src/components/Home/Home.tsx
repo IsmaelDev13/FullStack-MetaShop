@@ -29,14 +29,8 @@ export const Home: React.FC<HomeProps> = () => {
       ) : (
         <Fragment>
           <Metadata title="MetaShop | Homepage" />
-          <div className="h-screen flex flex-col text-center items-center justify-center ">
-            <p>Welcome to MetaShop</p>
-            <h1>Find Amazing Products Below</h1>
-
-            <h2 className="text-center font-sans text-xl mx-auto">
-              Featured Products
-            </h2>
-            <div className="flex flex-wrap w-3/4">
+          <div className="h-full max-w-screen-lg mx-auto ">
+            <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto p-10 space-x-10">
               {products &&
                 products.map(
                   (product: {
@@ -46,6 +40,7 @@ export const Home: React.FC<HomeProps> = () => {
                     _id: string;
                     ratings: number;
                     numOfReviews: number;
+                    category: string;
                   }) => <ProductCard product={product} />
                 )}
             </div>

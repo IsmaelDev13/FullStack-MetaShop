@@ -50,11 +50,10 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
   const [images, setImages] = useState<any>([]);
   const [oldImages, setOldImages] = useState<any>([]);
   const [imagesPreview, setImagesPreview] = useState<any>([]);
-
   const productId: any = id;
 
   useEffect(() => {
-    if (product && productId._id !== productId) {
+    if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));
     } else {
       setName(product.name);
@@ -119,28 +118,33 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
 
   return (
     <Fragment>
-      <Metadata title="Create " />
+      <Metadata title="Update Product | Admin " />
       <div>
         <Sidebar />
-        <div>
+        <div className="flex flex-col items-center">
           <form
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
             onSubmit={updateProductSubmitHandler}
             encType="multipart/form-data"
           >
-            <h1>Create Product</h1>
-            <div>
-              <SpeelcheckIcon />
+            <h1 className="font-bold text-3xl italic uppercase">
+              Update Product
+            </h1>
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <SpeelcheckIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="text"
                 placeholder="Product Name"
                 required
-                value={name}
                 onChange={(e) => setName(e.target.value)}
+                value={name}
               />
             </div>
-            <div>
-              <AttachMoneyIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <AttachMoneyIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="number"
                 placeholder="Price"
                 required
@@ -149,9 +153,10 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
               />
             </div>
 
-            <div>
-              <DescriptionIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <DescriptionIcon className="mx-4" />
               <textarea
+                className="focus-within:outline-none flex-grow"
                 placeholder="Product Description"
                 value={description}
                 cols={30}
@@ -159,8 +164,8 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
-            <div>
-              <AccountTreeIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <AccountTreeIcon className="mx-4" />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -173,9 +178,10 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
                 ))}
               </select>
             </div>
-            <div>
-              <StorageIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <StorageIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="number"
                 placeholder="Stock"
                 required
@@ -185,6 +191,11 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
             </div>
             <div>
               <input
+                className="text-gray-500 cursor-pointer file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-violet-50 file:text-black
+                hover:file:bg-violet-100 file:hover:cursor-pointer"
                 type="file"
                 name="avatar"
                 accept="image/*"
@@ -203,7 +214,13 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
                 <img key={i} src={image} alt="Product Preview" />
               ))}
             </div>
-            <Button type="submit" disabled={loading ? true : false}>
+            <Button
+              type="submit"
+              color="success"
+              size="large"
+              variant="contained"
+              disabled={loading ? true : false}
+            >
               Update Product
             </Button>
           </form>

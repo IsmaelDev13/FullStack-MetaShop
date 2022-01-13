@@ -48,12 +48,21 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
       <Metadata title="Shipping Details" />
       <CheckoutSteps activeStep={0} />
       <div>
-        <div>
-          <h2>Shipping Details</h2>
-          <form encType="multipart/form-data" onSubmit={shippingSubmit}>
-            <div>
-              <HomeIcon />
+        <div className="flex flex-col items-center   p-4 ">
+          <h2 className="font-bold text-3xl italic uppercase">
+            Shipping Details
+          </h2>
+          <form
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+            encType="multipart/form-data"
+            onSubmit={shippingSubmit}
+          >
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <HomeIcon className="mx-4" />
               <input
+                autoFocus
+                className="
+                focus-within:outline-none flex-grow "
                 type="text"
                 placeholder="Address"
                 required
@@ -62,10 +71,12 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
               />
             </div>
 
-            <div>
-              <LocationCityIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+              <LocationCityIcon className="mx-4" />
 
               <input
+                className=" 
+                focus-within:outline-none flex-grow "
                 type="text"
                 placeholder="City"
                 required
@@ -73,9 +84,11 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
-            <div>
-              <PinDrop />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+              <PinDrop className="mx-4" />
               <input
+                className="
+                focus-within:outline-none flex-grow"
                 type="number"
                 required
                 value={pinCode}
@@ -83,9 +96,11 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
               />
             </div>
 
-            <div>
-              <PhoneIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+              <PhoneIcon className="mx-4" />
               <input
+                className="
+                focus-within:outline-none flex-grow  "
                 type="number"
                 placeholder="Phone Number"
                 required
@@ -94,9 +109,11 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
                 size={10}
               />
             </div>
-            <div>
-              <PublicIcon />
+            <div className="border-2 border-gray-500 flex  hover:border-black p-4 hover:shadow-md">
+              <PublicIcon className="mx-4" />
               <select
+                className="
+                focus-within:outline-none flex-grow appearance-none cursor-pointer"
                 required
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
@@ -111,9 +128,11 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
               </select>
             </div>
             {country && (
-              <div>
-                <TransferWithinAStationIcon />
+              <div className=" border-gray-500  hover:border p-4 hover:shadow-md">
+                <TransferWithinAStationIcon className="mx-4" />
                 <select
+                  className="
+                focus-within:outline-none flex-grow appearance-none cursor-pointer"
                   required
                   value={state}
                   onChange={(e) => setState(e.target.value)}
@@ -130,8 +149,8 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
             )}
             <input
               type="submit"
-              value="Continue"
-              className="shippingBtn"
+              value="Confirm Order"
+              className="bg-black text-white w-full p-3 font-sans font-bold hover:bg-gray-700 cursor-pointer "
               disabled={state ? false : true}
             />
           </form>

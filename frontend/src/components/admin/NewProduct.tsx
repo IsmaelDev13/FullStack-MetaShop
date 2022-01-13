@@ -92,18 +92,22 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
 
   return (
     <Fragment>
-      <Metadata title="Create " />
-      <div>
+      <Metadata title="Create Product | Admin" />
+      <div className="h-full">
         <Sidebar />
-        <div>
+        <div className="flex flex-col items-center">
           <form
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg py-4 px-20 rounded-l-xl w-1/2"
             onSubmit={createProductSubmitHandler}
             encType="multipart/form-data"
           >
-            <h1>Create Product</h1>
-            <div>
-              <SpeelcheckIcon />
+            <h1 className="font-bold text-3xl italic uppercase">
+              Create Product
+            </h1>
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <SpeelcheckIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="text"
                 placeholder="Product Name"
                 required
@@ -111,9 +115,10 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
-              <AttachMoneyIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <AttachMoneyIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="number"
                 placeholder="Price"
                 required
@@ -121,9 +126,10 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
               />
             </div>
 
-            <div>
-              <DescriptionIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <DescriptionIcon className="mx-4" />
               <textarea
+                className="focus-within:outline-none flex-grow"
                 placeholder="Product Description"
                 value={description}
                 cols={30}
@@ -131,9 +137,12 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
-            <div>
-              <AccountTreeIcon />
-              <select onChange={(e) => setCategory(e.target.value)}>
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <AccountTreeIcon className="mx-4" />
+              <select
+                className="appearance-none cursor-pointer"
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <option value="">Choose Category</option>
                 {categories.map((category) => (
                   <option key={category} value={category}>
@@ -142,9 +151,10 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
                 ))}
               </select>
             </div>
-            <div>
-              <StorageIcon />
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <StorageIcon className="mx-4" />
               <input
+                className="focus-within:outline-none flex-grow"
                 type="number"
                 placeholder="Stock"
                 required
@@ -153,6 +163,11 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
             </div>
             <div>
               <input
+                className="text-gray-500 cursor-pointer file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-violet-50 file:text-black
+                hover:file:bg-violet-100 file:hover:cursor-pointer"
                 type="file"
                 name="avatar"
                 accept="image/*"
@@ -162,10 +177,21 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
             </div>
             <div>
               {imagesPreview.map((image: any, i: any) => (
-                <img key={i} src={image} alt="Product Preview" />
+                <img
+                  className="h-20 w-20 object-cover"
+                  key={i}
+                  src={image}
+                  alt="Product Preview"
+                />
               ))}
             </div>
-            <Button type="submit" disabled={loading ? true : false}>
+            <Button
+              color="success"
+              size="large"
+              variant="contained"
+              type="submit"
+              disabled={loading ? true : false}
+            >
               Create Product
             </Button>
           </form>

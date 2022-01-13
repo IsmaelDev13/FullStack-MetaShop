@@ -124,16 +124,18 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
       <Metadata title={`All Reviews | Admin`} />
       <div>
         <Sidebar />
-        <div>
+        <div className="flex flex-col items-center justify-center mx-auto space-y-10 ">
           <form
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl"
             onSubmit={productReviewSubmitHandler}
             encType="multipart/form-data"
           >
-            <h1>All Reviews</h1>
-            <div>
-              <StarIcon />
+            <h1 className="font-bold italic text-xl">All Reviews</h1>
+            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+              <StarIcon className="mx-4" />
               <input
                 type="text"
+                className="focus-within:outline-none flex-grow"
                 placeholder="Product Id"
                 required
                 value={productId}
@@ -142,6 +144,9 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
             </div>
 
             <Button
+              size="large"
+              variant="contained"
+              color="primary"
               type="submit"
               disabled={
                 loading ? true : false || productId === "" ? true : false
@@ -150,17 +155,19 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
               Search
             </Button>
           </form>
-          {reviews && reviews.length > 0 ? (
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={10}
-              disableSelectionOnClick
-              autoHeight
-            />
-          ) : (
-            <h1>No Reviews Found</h1>
-          )}
+          <div className="w-full ">
+            {reviews && reviews.length > 0 ? (
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                autoHeight
+              />
+            ) : (
+              <h1>No Reviews Found</h1>
+            )}
+          </div>
         </div>
       </div>
     </Fragment>

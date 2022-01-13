@@ -138,13 +138,13 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
                     : "transition-x-full  transform duration-300 blur-3xl ease-in"
                 }
               >
-                <h1 className="font-bold antialiased font-sans text-2xl">
+                <h1 className="font-bold antialiased font-sans text-xl md:text-2xl">
                   Welcome to MetaShop{" "}
                 </h1>
-                <div className="border-2 border-gray-500  hover:border-black p-4 ">
+                <div className="flex border-2 border-gray-500  hover:border-black p-4 ">
                   <MailOutlineIcon className="mx-4" />
                   <input
-                    className="focus-within:outline-none flex-grow"
+                    className="focus-within:outline-none flex-grow active:bg-transparent"
                     type="email"
                     placeholder="Email"
                     required
@@ -152,10 +152,10 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
                     onChange={(e) => setLoginEmail(e.target.value)}
                   />
                 </div>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
+                <div className="flex border-2 border-gray-500  hover:border-black p-4">
                   <LockOpenIcon className="mx-4" />
                   <input
-                    className="focus-within:outline-none flex-grow"
+                    className="focus-within:outline-none flex-grow bg-transparent"
                     type="password"
                     placeholder="Password"
                     required
@@ -203,7 +203,7 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
                     onChange={registerDataChange}
                   />
                 </div>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
+                <div className=" border-2 border-gray-500  hover:border-black  p-6">
                   <LockOpenIcon className="mx-2" />
                   <input
                     className="focus-within:outline-none flex-grow"

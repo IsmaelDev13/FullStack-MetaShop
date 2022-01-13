@@ -12,8 +12,8 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
     precision: 0.5,
   };
   return (
-    <div>
-      <img src="" alt="" />
+    <div className="flex flex-col items-center p-5 border-t-2  shadow-xl rounded-md">
+      <img className="h-10 w-10 rounded-full" src="/avatar.png" alt="" />
       <p>{review.name}</p>
       <Rating {...options} />
       <span>{review.comment}</span>

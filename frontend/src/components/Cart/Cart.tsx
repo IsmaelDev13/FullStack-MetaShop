@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemsToCard, removeItemsFromCart } from "../../actions/cartAction";
+import { addItemsToCard } from "../../actions/cartAction";
 import { CartItemCard } from "./CartItemCard";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface CartProps {
   history: any;
@@ -30,11 +30,8 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
     dispatch(addItemsToCard(id, newQty));
   };
 
-  const deleteCartItems = (id: string) => {
-    dispatch(removeItemsFromCart(id));
-  };
   const checkoutHandler = () => {
-    history.push("/shipping");
+    history.push("/login?redirect=shipping");
   };
 
   return (
@@ -48,26 +45,30 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
       ) : (
         <Fragment>
           <div>
-            <div>
-              <p>Product</p>
-              <p>Quantity</p>
-              <p>Subtotal</p>
-            </div>
-
             {cartItems &&
               cartItems.map((item: any) => (
-                <div key={item.product}>
-                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                <div
+                  className="flex items-center justify-evenly shadow-sm border-2 p-10"
+                  key={item.product}
+                >
+                  <CartItemCard item={item} />
                   <div>
                     <button
+                      className="bg-black text-white px-3 hover:scale-105 transition-transform duration-150 ease-in hover:bg-gray-800"
                       onClick={() =>
                         decreaseQuantity(item.product, item.quantity)
                       }
                     >
                       -
                     </button>
-                    <input type="number" readOnly value={item.quantity} />
+                    <input
+                      className="text-center border"
+                      type="number"
+                      readOnly
+                      value={item.quantity}
+                    />
                     <button
+                      className="bg-black text-white px-3 hover:scale-105 transition-transform duration-150 ease-in hover:bg-gray-800"
                       onClick={() =>
                         increaseQuantity(
                           item.product,
@@ -79,22 +80,29 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
                       +
                     </button>
                   </div>
-                  <p>{`$${item.price * item.quantity}`}</p>
+                  <p className="font-sans italic font-medium text-lg">{`$${
+                    item.price * item.quantity
+                  }`}</p>
                 </div>
               ))}
 
             <div>
               <div></div>
-              <div>
-                <p>Gross Total</p>
-                <p>{`$${cartItems.reduce(
+              <div className="flex items-center p-2 space-x-6">
+                <p className="font-bold">Gross Total</p>
+                <p className="font-sans italic font-medium text-lg">{`$${cartItems.reduce(
                   (acc: any, item: any) => acc + item.quantity * item.price,
                   0
                 )}`}</p>
               </div>
               <div></div>
               <div>
-                <button onClick={checkoutHandler}>Check out</button>
+                <button
+                  className="bg-black text-white w-1/2 p-3 m-4 border border-white  hover:bg-gray-700 cursor-pointer "
+                  onClick={checkoutHandler}
+                >
+                  Check out
+                </button>
               </div>
             </div>
           </div>

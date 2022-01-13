@@ -42,7 +42,7 @@ export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
       },
     },
     {
-      field: "itemsQty",
+      field: "itemsQuantity",
       headerName: "Items Qty",
       type: "number",
       minWidth: 150,
@@ -57,6 +57,7 @@ export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
     },
     {
       field: "actions",
+
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
@@ -86,7 +87,7 @@ export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="max-w-screen-2xl mx-auto bg-gray-100 border border-gray-300 rounded-md p-5 shadow-xl shadow-gray-200">
           <DataGrid
             rows={rows}
             columns={columns}
@@ -94,7 +95,9 @@ export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
             disableSelectionOnClick
             autoHeight
           />
-          <Typography>{user.name} 's Orders</Typography>
+          <h1 className="p-4 bg-white text-black rounded-md text-xl italic font-semibold border border-y-black">
+            {user.name} 's Orders
+          </h1>
         </div>
       )}
     </Fragment>

@@ -25,7 +25,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { OrderSuccess } from "./components/Cart/OrderSuccess";
 import { MyOrders } from "./components/Order/MyOrders";
 import { OrderDetails } from "./components/Order/OrderDetails";
-import { Dashboard } from "./components/admin/Dashboard";
+import Dashboard from "./components/admin/Dashboard";
 import { ProductList } from "./components/admin/ProductList";
 import { NewProduct } from "./components/admin/NewProduct";
 import { UpdateProduct } from "./components/admin/UpdateProduct";
@@ -59,7 +59,6 @@ function App() {
 
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
-          <Payment />
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
       )}
@@ -83,7 +82,7 @@ function App() {
         <ProtectedRoute exact path="/success" component={OrderSuccess} />
         <ProtectedRoute exact path="/orders" component={MyOrders} />
         <Route exact path="/order/:id" component={OrderDetails} />
-        <ProtectedRoute exact path="/admin/dashboard" omponent={Dashboard} />
+        <ProtectedRoute exact path="/admin/dashboard" component={Dashboard} />
         <ProtectedRoute exact path="/admin/products" component={ProductList} />
         <ProtectedRoute exact path="/admin/product" component={NewProduct} />
         <ProtectedRoute

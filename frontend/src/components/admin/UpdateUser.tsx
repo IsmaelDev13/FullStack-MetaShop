@@ -77,21 +77,25 @@ export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
 
   return (
     <Fragment>
-      <Metadata title="Update User" />
+      <Metadata title="Update User | Admin" />
       <div>
         <Sidebar />
-        <div>
+        <div className="flex flex-col items-center justify-center mx-auto">
           {loading ? (
             <Loader />
           ) : (
             <form
+              className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
               onSubmit={updateUserSubmitHandler}
               encType="multipart/form-data"
             >
-              <h1>Update User</h1>
-              <div>
-                <Person />
+              <h1 className="font-bold text-xl italic uppercase">
+                Update User
+              </h1>
+              <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+                <Person className="mx-4" />
                 <input
+                  className="focus-within:outline-none flex-grow"
                   type="text"
                   placeholder="Name"
                   required
@@ -99,9 +103,10 @@ export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div>
-                <MailOutline />
+              <div className="flex border-2 border-gray-500   hover:border-black p-4 hover:shadow-md ">
+                <MailOutline className="mx-4" />
                 <input
+                  className="focus-within:outline-none "
                   type="email"
                   placeholder="Email"
                   required
@@ -110,9 +115,13 @@ export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
                 />
               </div>
 
-              <div>
-                <VerifiedUserIcon />
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+                <VerifiedUserIcon className="mx-4" />
+                <select
+                  className="appearance-none cursor-pointer"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
                   <option value="">Choose Role</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
@@ -120,6 +129,9 @@ export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
               </div>
 
               <Button
+                size="large"
+                variant="contained"
+                color="primary"
                 type="submit"
                 disabled={
                   updateLoading ? true : false || role === "" ? true : false

@@ -60,67 +60,69 @@ const Products = () => {
       ) : (
         <Fragment>
           <Metadata title="MetaShop | Products" />
-          <h2>Products</h2>
-          <div>
-            {products &&
-              products.map((product: any) => (
-                <ProductCard key={product._id} product={product} />
-              ))}
-          </div>
-          <div>
-            <Typography>Price</Typography>
-            <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={25000}
-            />
-            <Typography>Categories</Typography>
-            <ul>
-              {categories.map((category) => (
-                <li
-                  className="cursor-pointer hover:text-teal-500"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-            <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                min={0}
-                max={5}
-                valueLabelDisplay="auto"
-              />
-            </fieldset>
-          </div>
-          {resultPerPage < count && (
-            <div className="flex items-center  m-7 ">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="1st"
-                lastPageText="Last"
-                itemClass=" border p-2 cursor-pointer first:rounded-l-lg last:rounded-r-lg "
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
+          <div className="h-screen grid grid-cols-4">
+            <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-3 ">
+              {products &&
+                products.map((product: any) => (
+                  <ProductCard key={product._id} product={product} />
+                ))}
             </div>
-          )}
+            <div className="col-span-1">
+              <Typography>Price</Typography>
+              <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+              />
+              <Typography>Categories</Typography>
+              <ul>
+                {categories.map((category) => (
+                  <li
+                    className="cursor-pointer hover:text-teal-500"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+              <fieldset>
+                <Typography component="legend">Ratings Above</Typography>
+                <Slider
+                  value={ratings}
+                  onChange={(e, newRating) => {
+                    setRatings(newRating);
+                  }}
+                  aria-labelledby="continuous-slider"
+                  min={0}
+                  max={5}
+                  valueLabelDisplay="auto"
+                />
+              </fieldset>
+            </div>
+
+            {resultPerPage < count && (
+              <div className="flex items-center  m-[6vmax] ">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={resultPerPage}
+                  totalItemsCount={productsCount}
+                  onChange={setCurrentPageNo}
+                  nextPageText="Next"
+                  prevPageText="Prev"
+                  firstPageText="1st"
+                  lastPageText="Last"
+                  itemClass=" border p-2 cursor-pointer first:rounded-l-lg last:rounded-r-lg "
+                  linkClass="page-link"
+                  activeClass="pageItemActive"
+                  activeLinkClass="pageLinkActive"
+                />
+              </div>
+            )}
+          </div>
         </Fragment>
       )}
     </Fragment>

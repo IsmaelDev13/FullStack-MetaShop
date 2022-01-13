@@ -10,28 +10,40 @@ interface ProductProps {
     _id: string;
     ratings: number;
     numOfReviews: number;
+    category: string;
   };
 }
 
 export const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  const options: any = {
-    size: "large",
-    value: product.ratings,
-    readOnly: true,
-    precision: 0.5,
-  };
+  // const options: any = {
+  //   size: "large",
+  //   value: product.ratings,
+  //   readOnly: true,
+  //   precision: 0.5,
+  // };
   return (
-    <Link
-      className="w-44 flex flex-col border border-red-200 "
-      to={`/product/${product._id}`}
-    >
-      <img className="h-40" src={product.images[0].url} alt={product.name} />
-      <p>{product.name}</p>
-      <div>
-        <Rating {...options} />
-        <span>({product.numOfReviews} Reviews)</span>
-      </div>
-      <span>{`$${product.price}`}</span>
-    </Link>
+    <div className="flex flex-col  m-10   bg-white border hover:border-black ">
+      <Link to={`/product/${product._id}`}>
+        <div className="relative  group">
+          <img
+            className="h-full w-full object-cover"
+            src={product.images[0].url}
+            alt={product.name}
+          />
+
+          <div className="w-1/4  bg-white transform duration-200 ease-in group-hover:-translate-y-10 hover: border">
+            <h4 className="font-mono">{`$${product.price}`}</h4>
+          </div>
+          <div>
+            {/* <Rating {...options} /> */}
+            <span className="absolute bottom-3 right-3 text-xs text-gray-600">
+              {product.numOfReviews > 0 ? product.numOfReviews : "No"} Reviews
+            </span>
+          </div>
+          <p className="text-lg">{product.name}</p>
+          <p className=" text-xs italic text-gray-400">{product.category}</p>
+        </div>
+      </Link>
+    </div>
   );
 };

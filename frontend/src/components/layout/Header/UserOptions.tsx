@@ -68,7 +68,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ user }) => {
       {/* <Backdrop open={open} /> */}
       <SpeedDial
         ariaLabel="SpeedDial"
-        className="fixed top-3 right-3"
+        className="fixed right-[3vmax] top-[3vmax]"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}

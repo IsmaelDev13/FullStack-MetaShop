@@ -75,7 +75,7 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
       ) : (
         <Fragment>
           <Metadata title="Update Profile" />
-          <div className=" grid place-items-center mx-auto bg-gray-100 p-20 ">
+          <div className="flex flex-col items-center justify-center mx-auto">
             <div>
               <form
                 className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "

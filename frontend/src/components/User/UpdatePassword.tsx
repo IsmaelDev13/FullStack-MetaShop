@@ -59,7 +59,7 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
       ) : (
         <Fragment>
           <Metadata title="Change Password" />
-          <div className=" grid place-items-center mx-auto  p-20">
+          <div className="flex flex-col items-center">
             <div>
               <form
                 className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl"
@@ -69,7 +69,7 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
                 <h2 className="font-bold antialiased font-sans text-2xl">
                   Update Password
                 </h2>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
+                <div className="flex border-2 border-gray-500  hover:border-black p-4">
                   <VpnKeyIcon className="mx-4" />
                   <input
                     type="password"
@@ -80,7 +80,7 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
                     onChange={(e) => setOldPassword(e.target.value)}
                   />
                 </div>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
+                <div className="flex border-2 border-gray-500  hover:border-black p-4">
                   <LockOpenIcon className="mx-4" />
                   <input
                     type="password"
@@ -91,7 +91,7 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </div>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
+                <div className="flex border-2 border-gray-500  hover:border-black p-4">
                   <LockIcon className="mx-4" />
                   <input
                     type="password"

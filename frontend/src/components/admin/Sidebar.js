@@ -12,7 +12,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 
 export const Sidebar = ({}) => {
   return (
-    <div>
+    <div className="flex flex-col bg-gray-100 items-center m-10  p-10 rounded-md shadow-md ">
       <Link to="/">
         <img src="" alt="" />
       </Link>

@@ -39,65 +39,90 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ history }) => {
       <Metadata title="Confirm Order" />
       <CheckoutSteps activeStep={1} />
       <div>
-        <div>
-          <div>
-            <Typography>Shipping Info</Typography>
-            <div className="confirmShippingAreaBox">
+        <div className="flex items-center justify-evenly shadow-sm border-2 p-10">
+          <div className="p-5 border-x-2 rounded-lg shadow space-y-2">
+            <h1 className="text-2xl font-semibold py-2 ">Shipping Info</h1>
+            <div className="space-y-6">
               <div>
-                <p>Name:</p>
-                <span>{user.name}</span>
+                <p className="text-xl italic">Name:</p>
+                <span className="text-lg ">{user.name}</span>
               </div>
               <div>
-                <p>Phone:</p>
-                <span>{shippingInfo.phoneNo}</span>
+                <p className="text-xl italic">Phone:</p>
+                <span className="text-lg ">{shippingInfo.phoneNo}</span>
               </div>
               <div>
-                <p>Address:</p>
-                <span>{address}</span>
+                <p className="text-xl italic">Address:</p>
+                <span className="text-lg ">{address}</span>
               </div>
             </div>
+            <button
+              onClick={() => history.push("/shipping")}
+              className="tracking-wider py-2 px-4 bg-black text-white rounded-lg transition transform ease-in-out duration-200 active:scale-95"
+            >
+              Edit
+            </button>
           </div>
-          <div>
-            <Typography>Your Cart Items:</Typography>
+          <div className="border-y shadow space-y-5 p-10">
+            <h1 className="text-2xl font-semibold py-2 ">Your Cart Items:</h1>
             <div>
               {cartItems &&
                 cartItems.map((item: any) => (
-                  <div key={item.product}>
-                    <img src={item.image} alt="" />
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                  <div
+                    className="flex flex-col items-center"
+                    key={item.product}
+                  >
+                    <img
+                      className="h-52 w-52 object-contain"
+                      src={item.image}
+                      alt=""
+                    />
+                    <Link
+                      className="cursor-pointer text-lg hover:underline p-2 font-medium transition transform ease-in duration-400 hover:uppercase"
+                      to={`/product/${item.product}`}
+                    >
+                      {item.name}
+                    </Link>
                     <span>
-                      {item.quantity} X $ {item.price} ={" "}
-                      <b>$ {item.price * item.quantity}</b>
+                      {item.quantity} x ${item.price} ={" "}
+                      <b>${item.price * item.quantity}</b>
                     </span>
                   </div>
                 ))}
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <Typography>Order Summary</Typography>
-            <div>
+        <div className="flex items-center p-5 ">
+          <div className="flex items-center flex-grow w-full justify-evenly rounded-b-md border-b-2">
+            <h1 className="text-2xl font-semibold py-2 ">Order Summary</h1>
+            <div className="flex items-center space-x-10">
               <div>
-                <p>Subtotal:</p>
+                <p className="font-semibold uppercase">Subtotal:</p>
                 <span>$ {subtotal}</span>
               </div>
               <div>
-                <p>Shipping Charges:</p>
+                <p className="font-semibold uppercase">Shipping Charges:</p>
                 <span>$ {shippingCharges}</span>
               </div>
               <div>
-                <p>TAX:</p>
+                <p className="font-semibold uppercase">TAX:</p>
                 <span>$ {tax}</span>
               </div>
             </div>
             <div>
               <p>
-                <b>Total:</b>
+                <b className="font-semibold uppercase text-lg">Total:</b>
               </p>
-              <span>$ {totalPrice}</span>
+              <span className="font-semibold uppercase text-lg ">
+                $ {totalPrice}
+              </span>
             </div>
-            <button onClick={proceedToPayment}>Proceed to Payment</button>
+            <button
+              className="bg-black text-white hover:bg-gray-700 px-4 py-2 rounded-md transition-transform duration-200 ease-out hover:scale-105  "
+              onClick={proceedToPayment}
+            >
+              Proceed to Payment
+            </button>
           </div>
         </div>
       </div>
