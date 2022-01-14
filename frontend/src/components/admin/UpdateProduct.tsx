@@ -153,7 +153,7 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
               />
             </div>
 
-            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+            <div className="flex border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
               <DescriptionIcon className="mx-4" />
               <textarea
                 className="focus-within:outline-none flex-grow"

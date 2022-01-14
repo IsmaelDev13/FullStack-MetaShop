@@ -5,6 +5,7 @@ import { getProduct, clearErrors } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Loader } from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import { Banner } from "./Banner";
 
 interface HomeProps {}
 
@@ -29,8 +30,10 @@ export const Home: React.FC<HomeProps> = () => {
       ) : (
         <Fragment>
           <Metadata title="MetaShop | Homepage" />
-          <div className="h-full max-w-screen-lg mx-auto ">
-            <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto p-10 space-x-10">
+          <div className="h-full  mx-auto ">
+            <Banner />
+            {/* <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto p-10 space-x-10"> */}
+            <div className="flex overflow-y-hidden overflow-x-scroll scrollbar-hide">
               {products &&
                 products.map(
                   (product: {
@@ -43,6 +46,14 @@ export const Home: React.FC<HomeProps> = () => {
                     category: string;
                   }) => <ProductCard product={product} />
                 )}
+            </div>
+            <div className="border-t  border-gray-800 ">
+              <img
+                className="h-40 w-full md:h-96 object-cover drop-shadow-lg"
+                loading="lazy"
+                src="/man.jpg"
+                alt=""
+              />
             </div>
           </div>
         </Fragment>

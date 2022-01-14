@@ -32,7 +32,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
       ) : (
         <Fragment>
           <Metadata title="Order Details" />
-          <div className=" grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
+          <div className="flex flex-col  md:grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
             <div className="col-span-2">
               <Typography
                 component="h1"
@@ -105,7 +105,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
                 {order.orderItems &&
                   order.orderItems.map((item: any) => (
                     <div
-                      className="flex  justify-center space-x-6 "
+                      className="flex flex-col md:inline-flex  justify-center space-x-6 "
                       key={item.product}
                     >
                       <img
@@ -115,7 +115,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
                       />
                       <Link
                         to={`/product/${item.product}`}
-                        className="text-2xl italic font-semibold pb-4 uppercase"
+                        className="text-lg md:text-2xl italic font-semibold pb-4 uppercase"
                       >
                         {item.name}
                       </Link>

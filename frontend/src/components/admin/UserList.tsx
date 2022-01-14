@@ -116,7 +116,7 @@ export const UsersList: React.FC<ProductListProps> = ({ history }) => {
       <div>
         <Sidebar />
         <div>
-          <h1>All Users</h1>
+          <h1 className="p-2 font-bold italic text-xl">All Users</h1>
           <DataGrid
             rows={rows}
             columns={columns}

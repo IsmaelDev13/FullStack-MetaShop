@@ -131,7 +131,7 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
             encType="multipart/form-data"
           >
             <h1 className="font-bold italic text-xl">All Reviews</h1>
-            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+            <div className="flex border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
               <StarIcon className="mx-4" />
               <input
                 type="text"
@@ -165,7 +165,9 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
                 autoHeight
               />
             ) : (
-              <h1>No Reviews Found</h1>
+              <h1 className="font-bold text-center text-xl">
+                No Reviews Found
+              </h1>
             )}
           </div>
         </div>

@@ -8,8 +8,8 @@ interface OrderSuccessProps {}
 export const OrderSuccess: React.FC<OrderSuccessProps> = () => {
   return (
     <Fragment>
-      <div className="h-[50vh] flex flex-col text-center justify-center items-center space-y-10 pt-40 m-auto bg-gray-100 rounded-md border-x-2 group">
-        <CheckCircleIcon style={{ fontSize: "7vmax" }} />
+      <div className="h-[50vh] flex flex-col text-center justify-center items-center space-y-10 pt-40 m-auto  rounded-md border-x-2 group">
+        <CheckCircleIcon style={{ fontSize: "10vmax" }} />
         <h1 className="text-4xl">Your order has been Placed successfully</h1>
         <Link
           to="/orders"

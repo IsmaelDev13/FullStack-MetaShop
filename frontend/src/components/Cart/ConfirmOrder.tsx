@@ -39,7 +39,7 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ history }) => {
       <Metadata title="Confirm Order" />
       <CheckoutSteps activeStep={1} />
       <div>
-        <div className="flex items-center justify-evenly shadow-sm border-2 p-10">
+        <div className="flex flex-col lg:flex-row items-center justify-evenly shadow-sm border-2 p-10">
           <div className="p-5 border-x-2 rounded-lg shadow space-y-2">
             <h1 className="text-2xl font-semibold py-2 ">Shipping Info</h1>
             <div className="space-y-6">
@@ -92,38 +92,36 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ history }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center p-5 ">
-          <div className="flex items-center flex-grow w-full justify-evenly rounded-b-md border-b-2">
-            <h1 className="text-2xl font-semibold py-2 ">Order Summary</h1>
-            <div className="flex items-center space-x-10">
-              <div>
-                <p className="font-semibold uppercase">Subtotal:</p>
-                <span>$ {subtotal}</span>
-              </div>
-              <div>
-                <p className="font-semibold uppercase">Shipping Charges:</p>
-                <span>$ {shippingCharges}</span>
-              </div>
-              <div>
-                <p className="font-semibold uppercase">TAX:</p>
-                <span>$ {tax}</span>
-              </div>
+        <div className="flex flex-col lg:flex-row items-center space-y-5 flex-grow w-full justify-evenly rounded-b-md border-b-2 my-2">
+          <h1 className="text-2xl font-semibold py-2 ">Order Summary</h1>
+          <div className="flex items-center space-x-10 ">
+            <div>
+              <p className="font-semibold uppercase">Subtotal:</p>
+              <span>$ {subtotal}</span>
             </div>
             <div>
-              <p>
-                <b className="font-semibold uppercase text-lg">Total:</b>
-              </p>
-              <span className="font-semibold uppercase text-lg ">
-                $ {totalPrice}
-              </span>
+              <p className="font-semibold uppercase">Shipping Charges:</p>
+              <span>$ {shippingCharges}</span>
             </div>
-            <button
-              className="bg-black text-white hover:bg-gray-700 px-4 py-2 rounded-md transition-transform duration-200 ease-out hover:scale-105  "
-              onClick={proceedToPayment}
-            >
-              Proceed to Payment
-            </button>
+            <div>
+              <p className="font-semibold uppercase">TAX:</p>
+              <span>$ {tax}</span>
+            </div>
           </div>
+          <div>
+            <p>
+              <b className="font-semibold uppercase text-lg">Total:</b>
+            </p>
+            <span className="font-semibold uppercase text-lg ">
+              $ {totalPrice}
+            </span>
+          </div>
+          <button
+            className="bg-black text-white hover:bg-gray-700 px-4 py-2 rounded-md transition-transform duration-200 ease-out hover:scale-105  "
+            onClick={proceedToPayment}
+          >
+            Proceed to Payment
+          </button>
         </div>
       </div>
     </Fragment>

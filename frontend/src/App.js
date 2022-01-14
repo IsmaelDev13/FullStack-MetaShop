@@ -36,6 +36,7 @@ import { UpdateUser } from "./components/admin/UpdateUser";
 import { ProductReviews } from "./components/admin/ProductReviews";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
 import { NotFound } from "./components/layout/NotFound/NotFound";
+import { Contact } from "./components/layout/Contact/Contact";
 
 function App() {
   const { isAuthenticated, user, loading } = useSelector((state) => state.user);
@@ -69,6 +70,7 @@ function App() {
         <Route path="/products/:keyword" component={Products} />
         <Route exact path="/search" component={Search} />
         <ProtectedRoute exact path="/account" component={Profile} />
+        <Route exact path="/contact" component={Contact} />
         <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
         <ProtectedRoute
           exact

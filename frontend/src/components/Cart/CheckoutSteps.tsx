@@ -29,7 +29,7 @@ export const CheckoutSteps: React.FC<CheckoutStepsProps> = ({ activeStep }) => {
       <Stepper
         alternativeLabel
         activeStep={activeStep}
-        style={{ boxSizing: "border-box" }}
+        style={{ boxSizing: "border-box", padding: "20px" }}
       >
         {steps.map((item, index) => (
           <Step

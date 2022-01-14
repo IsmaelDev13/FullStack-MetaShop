@@ -22,16 +22,17 @@ export const ProductCard: React.FC<ProductProps> = ({ product }) => {
   //   precision: 0.5,
   // };
   return (
-    <div className="flex flex-col  m-10   bg-white border hover:border-black ">
+    <div className="flex p-10 m-10 bg-white border hover:border-black ">
       <Link to={`/product/${product._id}`}>
         <div className="relative  group">
           <img
-            className="h-full w-full object-cover"
+            className="min-h-[20vmax] min-w-[20vmax] object-cover"
+            // className="max-h-[200px] object-contain mr-[10px] w-full transition-transform duration-500"
             src={product.images[0].url}
             alt={product.name}
           />
 
-          <div className="w-1/4  bg-white transform duration-200 ease-in group-hover:-translate-y-10 hover: border">
+          <div className="bg-white transform duration-200 ease-in group-hover:-translate-y-10 hover: border">
             <h4 className="font-mono">{`$${product.price}`}</h4>
           </div>
           <div>

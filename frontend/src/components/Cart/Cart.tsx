@@ -48,11 +48,11 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
             {cartItems &&
               cartItems.map((item: any) => (
                 <div
-                  className="flex items-center justify-evenly shadow-sm border-2 p-10"
+                  className="flex flex-col items-center justify-evenly shadow-sm border-2 p-10"
                   key={item.product}
                 >
                   <CartItemCard item={item} />
-                  <div>
+                  <div className="p-5">
                     <button
                       className="bg-black text-white px-3 hover:scale-105 transition-transform duration-150 ease-in hover:bg-gray-800"
                       onClick={() =>
@@ -96,7 +96,7 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
                 )}`}</p>
               </div>
               <div></div>
-              <div>
+              <div className="justify-self-center">
                 <button
                   className="bg-black text-white w-1/2 p-3 m-4 border border-white  hover:bg-gray-700 cursor-pointer "
                   onClick={checkoutHandler}

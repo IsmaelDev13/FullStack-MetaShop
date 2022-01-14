@@ -97,7 +97,7 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
         <Sidebar />
         <div className="flex flex-col items-center">
           <form
-            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg py-4 px-20 rounded-l-xl w-1/2"
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
             onSubmit={createProductSubmitHandler}
             encType="multipart/form-data"
           >
@@ -126,7 +126,7 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
               />
             </div>
 
-            <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
+            <div className="flex border-2 border-gray-500  hover:border-black p-4 hover:shadow-md ">
               <DescriptionIcon className="mx-4" />
               <textarea
                 className="focus-within:outline-none flex-grow"

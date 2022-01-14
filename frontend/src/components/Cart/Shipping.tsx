@@ -48,8 +48,8 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
       <Metadata title="Shipping Details" />
       <CheckoutSteps activeStep={0} />
       <div>
-        <div className="flex flex-col items-center   p-4 ">
-          <h2 className="font-bold text-3xl italic uppercase">
+        <div className="flex flex-col items-center justify-center mx-auto ">
+          <h2 className="font-bold text-3xl italic uppercase pt-4">
             Shipping Details
           </h2>
           <form

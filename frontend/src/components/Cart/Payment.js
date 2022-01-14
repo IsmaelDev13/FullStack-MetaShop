@@ -28,14 +28,6 @@ export const Payment = ({ history }) => {
   const elements = useElements();
   const payButton = useRef(null);
 
-  useEffect(() => {
-    if (location.pathname !== "/process/payment") {
-      setShowPayment(false);
-    } else if (location.pathname === "/process/payment") {
-      setShowPayment(true);
-    }
-  }, [location]);
-
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
@@ -118,37 +110,33 @@ export const Payment = ({ history }) => {
   return (
     <Fragment>
       <Metadata title="Payment" />
-      {showPayment && (
-        <>
-          <CheckoutSteps activeStep={2} />
-          <div className="flex flex-col items-center p-4 ">
-            <form
-              className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl w-1/2"
-              onSubmit={(e) => submitHandler(e)}
-            >
-              <h1 className="font-bold text-3xl italic uppercase">Card Info</h1>
-              <div className="border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
-                <CreditCardIcon />
-                <CardNumberElement />
-              </div>
-              <div className="border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
-                <EventIcon />
-                <CardExpiryElement />
-              </div>
-              <div className="border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
-                <VpnKeyIcon />
-                <CardCvcElement />
-              </div>
-              <input
-                className="bg-white text-center rounded-md hover:scale-105 transition-transform duration-300 ease-out border border-x-4 w-1/2 p-3 font-sans font-semibold hover:bg-gray-200 cursor-pointer "
-                type="submit"
-                value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
-                ref={payButton}
-              />
-            </form>
+      <CheckoutSteps activeStep={2} />
+      <div className="flex flex-col items-center mx-auto ">
+        <form
+          className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+          onSubmit={(e) => submitHandler(e)}
+        >
+          <h1 className="font-bold text-3xl italic uppercase">Card Info</h1>
+          <div className="flex flex-col border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+            <CreditCardIcon />
+            <CardNumberElement />
           </div>
-        </>
-      )}
+          <div className="flex flex-col border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+            <EventIcon />
+            <CardExpiryElement />
+          </div>
+          <div className="flex flex-col border-2 space-y-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
+            <VpnKeyIcon />
+            <CardCvcElement />
+          </div>
+          <input
+            className="bg-white text-center rounded-md hover:scale-105 transition-transform duration-300 ease-out border border-x-4 w-full p-3 font-sans font-semibold hover:bg-gray-200 cursor-pointer "
+            type="submit"
+            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
+            ref={payButton}
+          />
+        </form>
+      </div>
     </Fragment>
   );
 };

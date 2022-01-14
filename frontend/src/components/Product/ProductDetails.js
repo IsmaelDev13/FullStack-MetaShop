@@ -95,7 +95,7 @@ const ProductDetails = () => {
       ) : (
         <Fragment>
           <Metadata title={`MetaShop | ${product.name} `} />
-          <div className=" grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
+          <div className="flex flex-col  md:grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
             <div className="col-span-2  scale-75 top-10 border-t-2    ">
               <Carousel>
                 {product.images &&
@@ -202,12 +202,12 @@ const ProductDetails = () => {
             </DialogActions>
           </Dialog>
           {product.reviews && product.reviews[0] ? (
-            <div>
+            <div className="flex overflow-y-hidden overflow-x-scroll scrollbar-hide p-3">
               {product.reviews &&
                 product.reviews.map((review) => <ReviewCard review={review} />)}
             </div>
           ) : (
-            <p>No Reviews Yet</p>
+            <p className="font-bold  p-4 text-center text-xl">No Reviews Yet</p>
           )}
         </Fragment>
       )}
