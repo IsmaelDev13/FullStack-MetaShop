@@ -17,7 +17,8 @@
     },
     "plugins": [
       "cypress"
-    ]
+    ],
+    "extends": "react-app"
   },
   "author": "Ismael Diaz",
   "license": "ISC",
