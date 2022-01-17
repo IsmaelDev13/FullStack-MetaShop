@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable indent */
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
@@ -28,6 +30,7 @@ export const cartReducer = (
           cartItems: [...state.cartItems, item],
         };
       }
+
     case REMOVE_CART_ITEM:
       return {
         ...state,

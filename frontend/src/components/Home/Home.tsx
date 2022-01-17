@@ -7,12 +7,11 @@ import { Loader } from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import { Banner } from "./Banner";
 
-interface HomeProps {}
-
-export const Home: React.FC<HomeProps> = () => {
+export const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (state: any) => state.products
   );
   useEffect(() => {

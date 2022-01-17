@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import axios from "axios";
 
 import {
@@ -101,7 +102,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
+    const { data } = await axios.put("/api/v1/review", reviewData, config);
     dispatch({
       type: NEW_REVIEW_SUCCESS,
       payload: data.success,
@@ -162,7 +163,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/admin/product/new`,
+      "/api/v1/admin/product/new",
       productData,
       config
     );

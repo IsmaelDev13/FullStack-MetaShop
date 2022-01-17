@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormEvent, Fragment, useEffect, useRef } from "react";
 import { CheckoutSteps } from "./CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
@@ -66,6 +67,7 @@ export const Payment: React.FC<PaymentProps> = ({ history }) => {
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           card: elements.getElement(CardNumberElement)!,
           billing_details: {
             name: user.name,

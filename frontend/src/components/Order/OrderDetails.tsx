@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Metadata } from "../layout/Metadata";
@@ -8,9 +9,7 @@ import { Loader } from "../layout/Loader/Loader";
 import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 
-interface OrderDetailsProps {}
-
-export const OrderDetails: React.FC<OrderDetailsProps> = () => {
+export const OrderDetails = () => {
   const { id } = useParams();
   const { order, error, loading } = useSelector(
     (state: any) => state.orderDetails

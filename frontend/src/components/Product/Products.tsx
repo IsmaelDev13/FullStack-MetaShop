@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
@@ -54,7 +55,7 @@ const Products = () => {
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, alert, category, ratings, error]);
 
-  let count = filteredProductsCount;
+  const count = filteredProductsCount;
   const showFilters = () => {
     if (showFilter) {
       setShowFilter(false);

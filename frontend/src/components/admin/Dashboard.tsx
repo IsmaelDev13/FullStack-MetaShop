@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import {
@@ -29,9 +30,7 @@ ChartJS.register(
   Legend
 );
 
-interface DashboardProps {}
-
-const Dashboard: React.FC<DashboardProps> = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state: any) => state.products);
   const { orders } = useSelector((state: any) => state.allOrders);

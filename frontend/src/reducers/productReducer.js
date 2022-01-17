@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,

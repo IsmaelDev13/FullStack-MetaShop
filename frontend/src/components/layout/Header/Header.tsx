@@ -3,9 +3,7 @@ import { ShoppingBagIcon, UserIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
-interface HeaderProps {}
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header = () => {
   return (
     <div className="flex justify-evenly top-0 sticky z-50 bg-white border-b-2 p-8  uppercase   ">
       <Link

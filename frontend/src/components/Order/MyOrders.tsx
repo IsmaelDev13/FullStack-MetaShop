@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,9 +9,8 @@ import { useAlert } from "react-alert";
 import { Metadata } from "../layout/Metadata";
 import LaunchIcon from "@mui/icons-material/Launch";
 
-interface MyOrdersProps {}
 
-export const MyOrders: React.FC<MyOrdersProps> = () => {
+export const MyOrders = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { loading, error, orders } = useSelector(
@@ -19,7 +19,7 @@ export const MyOrders: React.FC<MyOrdersProps> = () => {
   const { user } = useSelector((state: any) => state.user);
   const rows: any = [];
   orders &&
-    orders.forEach((item: any, index: number) => {
+    orders.forEach((item: any) => {
       rows.push({
         itemsQuantity: item.orderItems.length,
         id: item._id,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Rating } from "@mui/material";
 import { useSelector } from "react-redux";

@@ -3,9 +3,7 @@ import LinkedIn from "@mui/icons-material/LinkedIn";
 import Facebook from "@mui/icons-material/Facebook";
 import GitHub from "@mui/icons-material/GitHub";
 
-interface FooterProps {}
-
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer = () => {
   return (
     <footer className="flex justify-evenly items-center bg-gray-700 text-gray-400 bottom-0 p-7">
       {/* Left */}
@@ -23,7 +21,8 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://github.com/IsmaelDev13"
-          className="px-2 flex" rel="noreferrer"
+          className="px-2 flex"
+          rel="noreferrer"
         >
           <GitHub className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           GitHub
@@ -31,7 +30,8 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://www.facebook.com/people/Ismael-Diaz/100070763821353/"
-          className="px-2 flex" rel="noreferrer"
+          className="px-2 flex"
+          rel="noreferrer"
         >
           <Facebook className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           Facebook
@@ -39,7 +39,8 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://www.linkedin.com/in/ismaeldev13/"
-          className="px-2 flex" rel="noreferrer"
+          className="px-2 flex"
+          rel="noreferrer"
         >
           <LinkedIn className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           LinkedIn

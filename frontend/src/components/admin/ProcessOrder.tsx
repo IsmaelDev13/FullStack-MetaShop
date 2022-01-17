@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Metadata } from "../layout/Metadata";
@@ -14,9 +15,8 @@ import { Sidebar } from "./Sidebar";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { UPDATE_ORDER_RESET } from "../../constants/orderContants";
 
-interface ConfirmOrderProps {}
 
-export const ProcessOrder: React.FC<ConfirmOrderProps> = () => {
+export const ProcessOrder = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();

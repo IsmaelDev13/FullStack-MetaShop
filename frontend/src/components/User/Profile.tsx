@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";

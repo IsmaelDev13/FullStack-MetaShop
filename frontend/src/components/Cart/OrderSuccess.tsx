@@ -2,9 +2,7 @@ import React, { Fragment } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Link } from "react-router-dom";
 
-interface OrderSuccessProps {}
-
-export const OrderSuccess: React.FC<OrderSuccessProps> = () => {
+export const OrderSuccess = () => {
   return (
     <Fragment>
       <div className="h-screen flex flex-col text-center justify-center items-center space-y-10 m-auto  rounded-md border-x-2 group">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
@@ -119,7 +120,7 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
 
   return (
     <Fragment>
-      <Metadata title={`All Reviews | Admin`} />
+      <Metadata title={"All Reviews | Admin"} />
       <div>
         <Sidebar />
         <div className="flex flex-col items-center justify-center mx-auto space-y-10 h-screen ">

@@ -92,7 +92,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
 };
 
 //DELETE ORDER --ADMIN
-export const deleteOrder = (id, order) => async (dispatch) => {
+export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
     const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
