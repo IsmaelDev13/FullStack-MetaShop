@@ -3,7 +3,6 @@ import { CheckoutSteps } from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import { Metadata } from "../layout/Metadata";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Typography } from "@mui/material";
 
 interface ConfirmOrderProps {
   history: any;
@@ -39,7 +38,7 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ history }) => {
       <Metadata title="Confirm Order" />
       <CheckoutSteps activeStep={1} />
       <div>
-        <div className="flex flex-col lg:flex-row items-center justify-evenly shadow-sm border-2 p-10">
+        <div className="h-screen flex flex-col lg:flex-row items-center justify-evenly shadow-sm border-2 p-10">
           <div className="p-5 border-x-2 rounded-lg shadow space-y-2">
             <h1 className="text-2xl font-semibold py-2 ">Shipping Info</h1>
             <div className="space-y-6">

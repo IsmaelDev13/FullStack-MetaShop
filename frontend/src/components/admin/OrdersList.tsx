@@ -117,14 +117,17 @@ export const OrdersList: React.FC<ProductListProps> = ({ history }) => {
       <Metadata title={`All Orders | Admin`} />
       <div>
         <Sidebar />
-        <div>
-          <h1>All Orders</h1>
+        <div className="w-full box-border flex flex-col h-screen">
+          <h1 className="text-center box-border p-3 m-10 text-4xl font-semibold">
+            All Orders
+          </h1>
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
+            className="appearance-none bg-white"
           />
         </div>
       </div>

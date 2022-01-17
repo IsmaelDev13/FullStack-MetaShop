@@ -87,13 +87,14 @@ export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="max-w-screen-2xl mx-auto bg-gray-100 border border-gray-300 rounded-md p-5 shadow-xl shadow-gray-200">
+        <div className="h-screen max-w-screen-2xl mx-auto bg-gray-100 border border-gray-300 rounded-md p-5 shadow-xl shadow-gray-200">
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
+            className="bg-white appearance-none border-0"
           />
           <h1 className="p-4 bg-white text-black rounded-md text-xl italic font-semibold border border-y-black">
             {user.name} 's Orders

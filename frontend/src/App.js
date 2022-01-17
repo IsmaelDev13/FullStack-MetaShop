@@ -8,7 +8,7 @@ import Products from "./components/Product/Products";
 import { Search } from "./components/Product/Search";
 import { LoginSignIn } from "./components/User/LoginSignIn";
 import store from "./store";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { loadUser } from "./actions/userAction";
 import { UserOptions } from "./components/layout/Header/UserOptions";
 import { useSelector } from "react-redux";
@@ -39,7 +39,7 @@ import { NotFound } from "./components/layout/NotFound/NotFound";
 import { Contact } from "./components/layout/Contact/Contact";
 
 function App() {
-  const { isAuthenticated, user, loading } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
@@ -52,6 +52,7 @@ function App() {
 
     getStripeApiKey();
   }, []);
+  window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -105,15 +106,16 @@ function App() {
           path="/admin/reviews"
           component={ProductReviews}
         />
-
         <Route
           component={
-            window.location.pathname === "/process/payment" ? null : NotFound
+            window.location.pathname === "/process/payment"
+              ? undefined
+              : NotFound
           }
         />
       </Switch>
 
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

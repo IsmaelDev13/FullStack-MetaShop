@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCard } from "../../actions/cartAction";
 import { CartItemCard } from "./CartItemCard";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 interface CartProps {
@@ -37,10 +36,17 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
   return (
     <Fragment>
       {cartItems.length === 0 ? (
-        <div>
-          <RemoveShoppingCartIcon />
-          <Typography>No Product in Your Cart</Typography>
-          <Link to="/products">View Products</Link>
+        <div className="h-screen w-full flex flex-col items-center">
+          <RemoveShoppingCartIcon style={{ fontSize: "120px" }} />
+          <h1 className="text-2xl lg:text-8xl m-10 ">
+            No Product in Your Cart
+          </h1>
+          <Link
+            className="px-10 py-6 bg-black text-white rounded-sm shadow-md text-xl"
+            to="/products"
+          >
+            View Products
+          </Link>
         </div>
       ) : (
         <Fragment>
@@ -48,11 +54,11 @@ export const Cart: React.FC<CartProps> = ({ history }) => {
             {cartItems &&
               cartItems.map((item: any) => (
                 <div
-                  className="flex flex-col items-center justify-evenly shadow-sm border-2 p-10"
+                  className="h-screen flex flex-col md:flex-row items-center justify-evenly shadow-sm border-2 p-10"
                   key={item.product}
                 >
                   <CartItemCard item={item} />
-                  <div className="p-5">
+                  <div className="md:p-5">
                     <button
                       className="bg-black text-white px-3 hover:scale-105 transition-transform duration-150 ease-in hover:bg-gray-800"
                       onClick={() =>

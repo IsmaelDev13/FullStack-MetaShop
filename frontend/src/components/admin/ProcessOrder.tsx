@@ -61,7 +61,7 @@ export const ProcessOrder: React.FC<ConfirmOrderProps> = ({}) => {
         {loading ? (
           <Loader />
         ) : (
-          <div>
+          <div className="h-screen">
             <div
               style={{
                 display: order.orderStatus === "Delivered" ? "block" : "grid",
@@ -123,7 +123,7 @@ export const ProcessOrder: React.FC<ConfirmOrderProps> = ({}) => {
               </div>
               <div className="flex items-center justify-center p-2 rounded-md border-2 space-x-4 bg-gray-50">
                 <h1 className="text-xl font-bold italic">Your Cart Items:</h1>
-                <div>
+                <div className="flex overflow-x-scroll scrollbar-hide">
                   {order.orderItems &&
                     order.orderItems.map((item: any) => (
                       <div key={item.product}>

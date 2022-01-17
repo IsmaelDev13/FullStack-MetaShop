@@ -32,7 +32,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
       ) : (
         <Fragment>
           <Metadata title="Order Details" />
-          <div className="flex flex-col  md:grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
+          <div className="h-screen  flex flex-col  md:grid grid-cols-3 bg-gray-100 shadow-lg rounded-lg ">
             <div className="col-span-2">
               <Typography
                 component="h1"
@@ -99,7 +99,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
                 </div>
               </div>
             </div>
-            <div className="p-5 rounded-sm border-2">
+            <div className="md:p-5 rounded-sm border-2">
               <h1 className="p-6 font-bold text-lg uppercase">Order Items:</h1>
               <div className="flex-wrap whitespace-nowrap overflow-y-scroll scrollbar-hide">
                 {order.orderItems &&
@@ -109,7 +109,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
                       key={item.product}
                     >
                       <img
-                        className="h-[200px] w-[200px]  object-contain "
+                        className="h-[100px] w-[100px] md:h-[200px] md:w-[200px]  object-contain "
                         src={item.image}
                         alt=""
                       />

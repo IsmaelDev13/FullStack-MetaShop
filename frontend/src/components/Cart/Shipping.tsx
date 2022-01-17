@@ -48,12 +48,12 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
       <Metadata title="Shipping Details" />
       <CheckoutSteps activeStep={0} />
       <div>
-        <div className="flex flex-col items-center justify-center mx-auto ">
-          <h2 className="font-bold text-3xl italic uppercase pt-4">
+        <div className="h-screen flex flex-col items-center justify-center mx-auto ">
+          <h2 className="font-bold text-3xl italic uppercase pb-4">
             Shipping Details
           </h2>
           <form
-            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+            className="transition-all md:focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg md:p-16 rounded-l-xl "
             encType="multipart/form-data"
             onSubmit={shippingSubmit}
           >
@@ -87,6 +87,7 @@ export const Shipping: React.FC<ShippingProps> = ({ history }) => {
             <div className="border-2 border-gray-500  hover:border-black p-4 hover:shadow-md">
               <PinDrop className="mx-4" />
               <input
+                id="number-pinCode"
                 className="
                 focus-within:outline-none flex-grow"
                 type="number"

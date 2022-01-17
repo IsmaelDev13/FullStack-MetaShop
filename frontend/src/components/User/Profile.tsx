@@ -1,17 +1,25 @@
 import React, { Fragment, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader/Loader";
+import { logoutUser } from "../../actions/userAction";
 
 interface ProfileProps {
   history: any;
 }
 
 export const Profile: React.FC<ProfileProps> = ({ history }) => {
+  const dispatch = useDispatch();
   const { user, loading, isAuthenticated } = useSelector(
     (state: any) => state.user
   );
+  const logout = () => {
+    dispatch(logoutUser());
+    if (!user) {
+      history.push("/login");
+    }
+  };
   useEffect(() => {
     if (isAuthenticated === false) {
       history.push("/login");
@@ -30,7 +38,7 @@ export const Profile: React.FC<ProfileProps> = ({ history }) => {
                 My Profile
               </h1>
               <img
-                className=" h-40 w-40 md:w-72 md:h-72 rounded-full my-10"
+                className=" h-40 w-40 md:w-72 md:h-72 rounded-full my-10 "
                 src={user.avatar.url}
                 alt={user.name}
               />
@@ -44,15 +52,15 @@ export const Profile: React.FC<ProfileProps> = ({ history }) => {
             <div className="col-span-2 p-10 md:p-28 space-y-3 md:space-y-10 font-sans ">
               <div className="flex items-center space-x-6">
                 <h4 className="text-2xl font-semibold">Name</h4>
-                <p className="text-2xl ">{user.name}</p>
+                <p className="text-xl md:text-2xl ">{user.name}</p>
               </div>
               <div className="flex items-center space-x-6">
                 <h4 className="text-2xl font-semibold">Email</h4>
-                <p className="text-2xl ">{user.email}</p>
+                <p className="text-xl md:text-2xl ">{user.email}</p>
               </div>
               <div className="flex items-center space-x-6">
                 <h4 className="text-2xl font-semibold">Joined On</h4>
-                <p className="text-2xl ">
+                <p className="text-xl md:text-2xl ">
                   {String(user.createdAt).slice(0, 10)}
                 </p>
               </div>
@@ -69,6 +77,12 @@ export const Profile: React.FC<ProfileProps> = ({ history }) => {
                 >
                   Change Password
                 </Link>
+                <button
+                  onClick={() => logout()}
+                  className="px-6 py-2 bg-red-400 text-white text-center text-xl shadow-lg rounded-md hover:bg-red-600 cursor-pointer font-sans uppercase transition-transform hover:scale-105 duration-200 ease-in"
+                >
+                  Logout
+                </button>
               </div>
             </div>
           </div>

@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Metadata } from "../layout/Metadata";
 import { Sidebar } from "./Sidebar";
@@ -13,7 +12,6 @@ import {
   getAllReviews,
   deleteReviews,
 } from "../../actions/productAction";
-import EditIcon from "@mui/icons-material/Edit";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 interface ProductListProps {
   history: any;
@@ -124,7 +122,7 @@ export const ProductReviews: React.FC<ProductListProps> = ({ history }) => {
       <Metadata title={`All Reviews | Admin`} />
       <div>
         <Sidebar />
-        <div className="flex flex-col items-center justify-center mx-auto space-y-10 ">
+        <div className="flex flex-col items-center justify-center mx-auto space-y-10 h-screen ">
           <form
             className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl"
             onSubmit={productReviewSubmitHandler}

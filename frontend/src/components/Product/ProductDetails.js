@@ -60,12 +60,12 @@ const ProductDetails = () => {
   };
 
   const increaseQuantity = () => {
-    if (1 >= quantity) return;
+    if (product.Stock <= quantity) return;
     const qty = quantity + 1;
     setQuantity(qty);
   };
   const decreaseQuantity = () => {
-    if (quantity <= 1) return;
+    if (1 >= quantity) return;
     const qty = quantity - 1;
     setQuantity(qty);
   };
@@ -73,10 +73,6 @@ const ProductDetails = () => {
     dispatch(addItemsToCard(id, quantity));
     alert.success("Item Added to Cart");
   };
-
-  // const submitReviewToggle = () => {
-  //   open ? setOpen(false) : setOpen(true);
-  // };
 
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
@@ -204,7 +200,9 @@ const ProductDetails = () => {
           {product.reviews && product.reviews[0] ? (
             <div className="flex overflow-y-hidden overflow-x-scroll scrollbar-hide p-3">
               {product.reviews &&
-                product.reviews.map((review) => <ReviewCard review={review} />)}
+                product.reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
             </div>
           ) : (
             <p className="font-bold  p-4 text-center text-xl">No Reviews Yet</p>

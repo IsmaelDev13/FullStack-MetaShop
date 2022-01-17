@@ -2,14 +2,13 @@ import { Button } from "@mui/material";
 import React, { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Metadata } from "../layout/Metadata";
 import { Sidebar } from "./Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
 
 import EditIcon from "@mui/icons-material/Edit";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 interface ProductListProps {
@@ -115,14 +114,17 @@ export const UsersList: React.FC<ProductListProps> = ({ history }) => {
       <Metadata title={`All Users | Admin`} />
       <div>
         <Sidebar />
-        <div>
-          <h1 className="p-2 font-bold italic text-xl">All Users</h1>
+        <div className="w-full box-border flex flex-col h-screen">
+          <h1 className="text-center box-border p-3 m-10 text-4xl font-semibold">
+            All Users
+          </h1>
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
+            className="appearance-none bg-white"
           />
         </div>
       </div>

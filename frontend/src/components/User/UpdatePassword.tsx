@@ -1,13 +1,9 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Loader } from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { useNavigate } from "react-router-dom";
-import {
-  UPDATE_PASSWORD_RESET,
-  UPDATE_PROFILE_RESET,
-} from "../../constants/userConstants";
+import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
 import { Metadata } from "../layout/Metadata";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockIcon from "@mui/icons-material/Lock";
@@ -59,7 +55,7 @@ export const UpdatePassword: React.FC<UpdatePasswordProps> = ({ history }) => {
       ) : (
         <Fragment>
           <Metadata title="Change Password" />
-          <div className="flex flex-col items-center">
+          <div className="h-screen flex flex-col items-center">
             <div>
               <form
                 className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl"

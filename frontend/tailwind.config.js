@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["system-ui", "Helvetica", "sans-serif"],
+      serif: ["ui-monospace", "SFMono-Regular", "Menlo"],
     },
     extend: {
       animation: {

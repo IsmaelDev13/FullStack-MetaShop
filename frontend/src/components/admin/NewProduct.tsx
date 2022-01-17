@@ -11,7 +11,6 @@ import SpeelcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { Sidebar } from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
-import { Navigate, useNavigate } from "react-router-dom";
 
 const categories = [
   "Laptop",
@@ -97,7 +96,7 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
         <Sidebar />
         <div className="flex flex-col items-center">
           <form
-            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg md:p-16 rounded-l-xl "
             onSubmit={createProductSubmitHandler}
             encType="multipart/form-data"
           >
@@ -175,7 +174,7 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
                 onChange={createProductImageChange}
               />
             </div>
-            <div>
+            <div className="flex overflow-x-scroll scrollbar-hide">
               {imagesPreview.map((image: any, i: any) => (
                 <img
                   className="h-20 w-20 object-cover"

@@ -102,7 +102,7 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
-          <div className="grid place-content-center font-sans border-b-2 p-10 ">
+          <div className="h-screen grid place-content-center font-sans border-b-2 p-10 ">
             <div className="">
               <div className="">
                 <div className="font-sans flex items-center text-center w-full justify-evenly p-4 ">
@@ -208,17 +208,28 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
                   <input
                     className="focus-within:outline-none flex-grow"
                     type="password"
-                    placeholder="Password"
+                    placeholder="Your Password"
                     required
                     name="password"
                     value={password}
                     onChange={registerDataChange}
                   />
                 </div>
-                <div className="border-2 border-gray-500  hover:border-black p-4">
-                  <img src="" alt="" />
+                <div className="flex flex-col md:flex-row border-2 border-gray-500  hover:border-black p-4">
+                  {avatarPreview && (
+                    <img
+                      className="h-20 w-20 rounded-full"
+                      src={avatarPreview}
+                      alt=""
+                    />
+                  )}
                   <input
-                    className="focus-within:outline-none flex-grow"
+                    className="text-gray-500 text-xs cursor-pointer file:mr-4 file:py-2 
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-black
+                    hover:file:bg-violet-100 file:hover:cursor-pointer appearance-none"
+                    aria-hidden
                     type="file"
                     name="avatar"
                     accept="image/*"

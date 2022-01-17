@@ -1,10 +1,14 @@
 import React from "react";
 import { Rating } from "@mui/material";
+import { useSelector } from "react-redux";
 interface ReviewCardProps {
   review: any;
 }
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
+  const { user, loading, isAuthenticated } = useSelector(
+    (state: any) => state.user
+  );
   const options: any = {
     size: "large",
     value: review.rating,
@@ -13,7 +17,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   };
   return (
     <div className="flex flex-col items-center p-5 border-t-2  shadow-xl rounded-md">
-      <img className="h-10 w-10 rounded-full" src="/avatar.png" alt="" />
+      <img className="h-10 w-10 rounded-full" src={user.avatar.url} alt="" />
       <p>{review.name}</p>
       <Rating {...options} />
       <span>{review.comment}</span>

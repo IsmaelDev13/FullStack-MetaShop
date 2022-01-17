@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import {
@@ -12,12 +11,11 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { Chart } from "react-chartjs-2";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { useEffect } from "react";
-import { clearErrors, getAdminProduct } from "../../actions/productAction";
+import {  getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction";
 import { getAllUsers } from "../../actions/userAction";
 
@@ -70,7 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({}) => {
         label: "Total Amount",
         backgroundColor: ["tomato"],
         hoverBackgroundColor: ["rgb(192,72, 49)"],
-        data: [0, 4000],
+        data: [0, totalAmount],
       },
     ],
   };

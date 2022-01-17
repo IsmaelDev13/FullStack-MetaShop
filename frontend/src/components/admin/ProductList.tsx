@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React, { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Metadata } from "../layout/Metadata";
 import { Sidebar } from "./Sidebar";
@@ -52,7 +52,7 @@ export const ProductList: React.FC<ProductListProps> = ({ history }) => {
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
     {
       field: "name",
-      headerName: "name",
+      headerName: "Product Name",
       minWidth: 350,
       flex: 1,
     },
@@ -110,14 +110,17 @@ export const ProductList: React.FC<ProductListProps> = ({ history }) => {
       <Metadata title={`All Products | Admin`} />
       <div>
         <Sidebar />
-        <div>
-          <h1>All Products</h1>
+        <div className="w-full box-border flex flex-col h-screen">
+          <h1 className="text-center box-border p-3 m-10 text-4xl font-semibold">
+            All Products
+          </h1>
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
+            className="appearance-none bg-white"
           />
         </div>
       </div>

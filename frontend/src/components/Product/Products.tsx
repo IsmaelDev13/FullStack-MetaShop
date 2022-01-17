@@ -53,8 +53,7 @@ const Products = () => {
       dispatch(clearErrors);
     }
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
-    console.log(keyword);
-  }, [dispatch, keyword, currentPage, price, category, ratings, error]);
+  }, [dispatch, keyword, currentPage, price, alert, category, ratings, error]);
 
   let count = filteredProductsCount;
   const showFilters = () => {
@@ -137,7 +136,6 @@ const Products = () => {
               >
                 Show Filters
               </Button>
-              {/* <ArrowSmUpIcon className="h-6 w-6" /> */}
             </div>
 
             <div className="flex items-center flex-wrap md:grid grid-cols-2 lg:grid-cols-3   ">
@@ -146,41 +144,7 @@ const Products = () => {
                   <ProductCard key={product._id} product={product} />
                 ))}
             </div>
-            <div>
-              {/* <Slider
-                value={price}
-                onChange={priceHandler}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                min={0}
-                max={25000}
-              /> */}
-              {/* <Typography>Categories</Typography>
-              <ul>
-                {categories.map((category) => (
-                  <li
-                    className="cursor-pointer hover:text-teal-500"
-                    key={category}
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul> */}
-              {/* <fieldset>
-                <Typography component="legend">Ratings Above</Typography>
-                <Slider
-                  value={ratings}
-                  onChange={(e, newRating) => {
-                    setRatings(newRating);
-                  }}
-                  aria-labelledby="continuous-slider"
-                  min={0}
-                  max={5}
-                  valueLabelDisplay="auto"
-                />
-              </fieldset> */}
-            </div>
+            <div></div>
 
             {resultPerPage < count && (
               <div className="flex items-center  m-[6vmax] ">

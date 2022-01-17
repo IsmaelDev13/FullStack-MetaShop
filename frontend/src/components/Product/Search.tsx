@@ -20,7 +20,7 @@ export const Search: React.FC<SearchProps> = ({ history }) => {
   return (
     <Fragment>
       <Metadata title="MetaShop | Search A Product... " />
-      <div className="flex flex-col justify-center items-center mx-auto">
+      <div className="h-screen w-full flex flex-col justify-center items-center mx-auto">
         <form
           className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl  "
           onSubmit={searchSubmitHandler}

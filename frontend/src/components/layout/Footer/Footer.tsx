@@ -1,32 +1,49 @@
 import React from "react";
-import playstore from "./playstore1.png";
-import appstore from "./appstore1.png";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import Facebook from "@mui/icons-material/Facebook";
+import GitHub from "@mui/icons-material/GitHub";
 
 interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = () => {
   return (
-    <footer className="flex justify-evenly items-center bg-slate-400 bottom-0 w-full fixed h-40">
+    <footer className="flex justify-evenly items-center bg-gray-700 text-gray-400 bottom-0 p-7">
       {/* Left */}
-      <div className="flex items-center space-x-5">
-        <h4>Download our App</h4>
-        <p>Download App for Android and IOS phones</p>
-        <img className="h-14 object-cover" src={playstore} alt="" />
-        <img className="h-14" src={appstore} alt="" />
-      </div>
+
       {/* Mid */}
-      <div className="flex flex-col text-xs ">
-        <h1>MetaShop</h1>
-        <p>High Quality Is Our Priority</p>
+      <div className="flex flex-col items-start md:items-center md:flex-row space-x-4 text-xs space-y-2 ">
+        <h1 className="text-sm hover:text-white">MetaShop</h1>
+        <p className="hover:text-white">High Quality Is Our Priority</p>
 
         <p>Copyrights 2022 &copy;IsmaelDiaz</p>
       </div>
       {/* Right */}
-      <div>
+      <div className="flex flex-col md:flex-row items-start md:items-center space-x-10 space-y-2">
         <h4>Follow Us</h4>
-        <a>Instagram</a>
-        <a>Facebook</a>
-        <a>LinkedIn</a>
+        <a
+          target="_blank"
+          href="https://github.com/IsmaelDev13"
+          className="px-2 flex"
+        >
+          <GitHub className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
+          GitHub
+        </a>
+        <a
+          target="_blank"
+          href="https://www.facebook.com/people/Ismael-Diaz/100070763821353/"
+          className="px-2 flex"
+        >
+          <Facebook className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
+          Facebook
+        </a>
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/ismaeldev13/"
+          className="px-2 flex"
+        >
+          <LinkedIn className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
+          LinkedIn
+        </a>
       </div>
     </footer>
   );

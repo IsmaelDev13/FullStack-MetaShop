@@ -15,7 +15,7 @@ import SpeelcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { Sidebar } from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const categories = [
   "Laptop",
@@ -123,7 +123,7 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
         <Sidebar />
         <div className="flex flex-col items-center">
           <form
-            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+            className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg md:p-16 rounded-l-xl "
             onSubmit={updateProductSubmitHandler}
             encType="multipart/form-data"
           >
@@ -203,15 +203,25 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
                 onChange={updateProductImageChange}
               />
             </div>
-            <div>
+            <div className="flex overflow-x-scroll scrollbar-hide">
               {oldImages &&
                 oldImages.map((image: any, i: any) => (
-                  <img key={i} src={image.url} alt="Old Product Preview" />
+                  <img
+                    className="h-20 w-20 object-contain"
+                    key={i}
+                    src={image.url}
+                    alt="Old Product Preview"
+                  />
                 ))}
             </div>
-            <div>
+            <div className="flex overflow-x-scroll scrollbar-hide">
               {imagesPreview.map((image: any, i: any) => (
-                <img key={i} src={image} alt="Product Preview" />
+                <img
+                  className="h-20 w-20 object-contain"
+                  key={i}
+                  src={image}
+                  alt="Product Preview"
+                />
               ))}
             </div>
             <Button
@@ -220,6 +230,7 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
               size="large"
               variant="contained"
               disabled={loading ? true : false}
+              style={{ marginBottom: "20px" }}
             >
               Update Product
             </Button>

@@ -5,7 +5,6 @@ import FaceIcon from "@mui/icons-material/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { useNavigate } from "react-router-dom";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import { Metadata } from "../layout/Metadata";
 
@@ -35,6 +34,7 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
     myForm.set("email", email);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
+    
   };
   const updateProfileDataChange = (e: any) => {
     const reader = new FileReader();
@@ -75,10 +75,10 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
       ) : (
         <Fragment>
           <Metadata title="Update Profile" />
-          <div className="flex flex-col items-center justify-center mx-auto">
+          <div className="h-screen flex flex-col items-center justify-center mx-auto">
             <div>
               <form
-                className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-16 rounded-l-xl "
+                className="transition-all focus-within:scale-105 antialiased duration-200 ease-in-out space-y-6 shadow-lg p-9 md:p-14 rounded-l-xl "
                 encType="multipart/form-data"
                 onSubmit={updateProfileSubmit}
               >
@@ -117,6 +117,11 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
                     alt="Avatar Preview"
                   />
                   <input
+                    className="text-gray-500 text-xs cursor-pointer file:mr-4 file:py-2 
+                  file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-violet-50 file:text-black
+                  hover:file:bg-violet-100 file:hover:cursor-pointer "
                     type="file"
                     name="avatar"
                     accept="image/*"

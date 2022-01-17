@@ -1,4 +1,3 @@
-import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -14,7 +13,9 @@ export const Sidebar = ({}) => {
   return (
     <div className="flex flex-col bg-gray-100 items-center m-10  p-10 rounded-md shadow-md ">
       <Link to="/">
-        <img src="" alt="" />
+        <h1 className="font-serif text-2xl font-bold pb-2 hover:border-b-2">
+          MetaShop
+        </h1>
       </Link>
       <Link to="/admin/dashboard">
         <p>
