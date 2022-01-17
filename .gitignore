@@ -4,6 +4,9 @@
 /frontend/.pnp
 /frontend/.pnp.js
 
+cypress/plugins
+cypress/support
+cypress/videos
 # testing
 /frontend/coverage
 

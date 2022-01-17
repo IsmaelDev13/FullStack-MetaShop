@@ -1,4 +1,4 @@
-Cypress.on("uncaught:exception", () => {
+/*Cypress.on("uncaught:exception", () => {
   return false;
 });
 
@@ -88,3 +88,4 @@ describe("MetaShop as an user", () => {
     });
   });
 });
+*/
