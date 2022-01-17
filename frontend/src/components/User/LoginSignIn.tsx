@@ -81,7 +81,7 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
     if (isAuthenticated) {
       history.push(redirect);
     }
-  }, [dispatch, alert, error, isAuthenticated, redirect]);
+  }, [dispatch, alert, error, isAuthenticated, redirect, history]);
 
   const switchTabs = (
     e: React.MouseEvent<HTMLParagraphElement, MouseEvent>,

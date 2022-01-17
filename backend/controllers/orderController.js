@@ -4,7 +4,7 @@ const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 //Create new Order
-exports.newOrder = catchAsyncErrors(async (req, res, next) => {
+exports.newOrder = catchAsyncErrors(async (req, res) => {
   const {
     shippingInfo,
     orderItems,
@@ -50,7 +50,7 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
 });
 
 //get logged in user orders
-exports.myOrders = catchAsyncErrors(async (req, res, next) => {
+exports.myOrders = catchAsyncErrors(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
 
   res.status(200).json({
@@ -60,7 +60,7 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 });
 
 //get all Orders --Admin
-exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
+exports.getAllOrders = catchAsyncErrors(async (req, res) => {
   const orders = await Order.find();
 
   let totalAmount = 0;

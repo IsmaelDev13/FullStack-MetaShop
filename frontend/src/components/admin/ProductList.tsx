@@ -46,7 +46,7 @@ export const ProductList: React.FC<ProductListProps> = ({ history }) => {
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
     dispatch(getAdminProduct());
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+  }, [dispatch, alert, error, deleteError, isDeleted, history]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },

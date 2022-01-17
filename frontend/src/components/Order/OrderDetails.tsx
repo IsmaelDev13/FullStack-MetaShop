@@ -10,7 +10,7 @@ import { useAlert } from "react-alert";
 
 interface OrderDetailsProps {}
 
-export const OrderDetails: React.FC<OrderDetailsProps> = ({}) => {
+export const OrderDetails: React.FC<OrderDetailsProps> = () => {
   const { id } = useParams();
   const { order, error, loading } = useSelector(
     (state: any) => state.orderDetails

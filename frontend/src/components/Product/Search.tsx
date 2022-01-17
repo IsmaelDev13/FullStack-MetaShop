@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";
 
 interface SearchProps {
@@ -42,6 +41,3 @@ export const Search: React.FC<SearchProps> = ({ history }) => {
     </Fragment>
   );
 };
-function useHistory() {
-  throw new Error("Function not implemented.");
-}

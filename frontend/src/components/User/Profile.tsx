@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader/Loader";

@@ -1,4 +1,4 @@
-Cypress.on("uncaught:exception", (err, runnable) => {
+Cypress.on("uncaught:exception", () => {
   return false;
 });
 
@@ -50,14 +50,12 @@ describe("MetaShop as an user", () => {
       cy.contains("2 Stars").click();
       cy.get("textarea:first").type("Poor product, I would never buy it again");
       cy.get("button:last").click();
-      cy.wait(1000);
       cy.contains("Poor product, I would never buy it again");
     });
     it.only("Buy a Product ", () => {
       cy.contains("Products").click();
       cy.contains("T-Shirt Blue").click();
       cy.contains("Add to Cart").click();
-      cy.wait(500);
       cy.contains("Item Added to Cart");
       cy.get("[id='cart-icon']").click();
       for (let n = 0; n < 2; n++) {
@@ -71,12 +69,10 @@ describe("MetaShop as an user", () => {
       cy.get("[placeholder='Phone Number']").type(1234567890);
       cy.get("select").select("Spain");
       cy.get("select:last").select("Andalusia");
+      // eslint-disable-next-line quotes
       cy.get('[value="Confirm Order"]').click();
       cy.contains("Shipping Info");
       cy.contains("Proceed to Payment").click();
-      // cy.visit("https://stripe-payments-demo.appspot.com/");
-
-      // cy.get("#generate").click();
 
       cy.get("#card-element").within(() => {
         cy.fillElementsInput("cardNumber", "4242424242424242");

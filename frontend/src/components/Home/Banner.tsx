@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowIcon from "@mui/icons-material/ArrowRightAltOutlined";
 import { useHistory } from "react-router-dom";
 
 interface BannerProps {}
 
-export const Banner: React.FC<BannerProps> = ({}) => {
+export const Banner: React.FC<BannerProps> = () => {
   const history = useHistory();
   const [open, setOpen] = useState(true);
   return (

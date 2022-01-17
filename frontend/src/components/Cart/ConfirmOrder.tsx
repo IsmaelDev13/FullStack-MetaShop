@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { CheckoutSteps } from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import { Metadata } from "../layout/Metadata";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface ConfirmOrderProps {
   history: any;

@@ -1,9 +1,8 @@
-import { Button } from "@mui/material";
-import React, { Fragment } from "react";
+import React from "react";
 
 interface ContactProps {}
 
-export const Contact: React.FC<ContactProps> = ({}) => {
+export const Contact: React.FC<ContactProps> = () => {
   return (
     <div className="h-screen w-screen flex flex-col items-center mx-auto justify-center ">
       <a href="mailto:ismaeldev13@gmail.com">

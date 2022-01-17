@@ -50,7 +50,7 @@ export const NewProduct: React.FC<NewProductProps> = ({ history }) => {
       history.push("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, success]);
+  }, [dispatch, alert, error, success, history]);
 
   const createProductSubmitHandler = (e: any) => {
     e.preventDefault();

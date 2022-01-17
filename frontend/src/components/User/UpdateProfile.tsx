@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Loader } from "../layout/Loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import FaceIcon from "@mui/icons-material/Face";
@@ -34,7 +34,6 @@ export const UpdateProfile: React.FC<UpdateProfileProps> = ({ history }) => {
     myForm.set("email", email);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
-    
   };
   const updateProfileDataChange = (e: any) => {
     const reader = new FileReader();

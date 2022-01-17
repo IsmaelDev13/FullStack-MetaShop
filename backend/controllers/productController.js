@@ -5,7 +5,7 @@ const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
 
 // Create Product --admin
-exports.createProduct = catchAsyncErrors(async (req, res, next) => {
+exports.createProduct = catchAsyncErrors(async (req, res) => {
   let images = [];
 
   if (typeof req.body.images === "string") {
@@ -35,7 +35,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Get All Products
-exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
+exports.getAllProducts = catchAsyncErrors(async (req, res) => {
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
@@ -61,7 +61,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Get All Products ---ADMIN
-exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+exports.getAdminProducts = catchAsyncErrors(async (req, res) => {
   const products = await Product.find();
   res.status(200).json({
     success: true,
@@ -148,7 +148,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Create New Review or Update the review
-exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
+exports.createProductReview = catchAsyncErrors(async (req, res) => {
   const { rating, comment, productId } = req.body;
   const review = {
     user: req.user._id,
@@ -176,10 +176,10 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   let avg = 0;
 
-  product.ratings =
-    product.reviews.forEach((rev) => {
-      avg += rev.rating;
-    }) / product.reviews.length;
+  product.reviews.forEach((rev) => {
+    avg += rev.rating;
+  });
+  product.ratings = avg / product.reviews.length;
 
   await product.save({ validateBeforeSave: false });
 

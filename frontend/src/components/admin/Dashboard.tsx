@@ -13,9 +13,8 @@ import {
 } from "chart.js";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
 import { useEffect } from "react";
-import {  getAdminProduct } from "../../actions/productAction";
+import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction";
 import { getAllUsers } from "../../actions/userAction";
 
@@ -32,8 +31,7 @@ ChartJS.register(
 
 interface DashboardProps {}
 
-const Dashboard: React.FC<DashboardProps> = ({}) => {
-  const alert = useAlert();
+const Dashboard: React.FC<DashboardProps> = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state: any) => state.products);
   const { orders } = useSelector((state: any) => state.allOrders);

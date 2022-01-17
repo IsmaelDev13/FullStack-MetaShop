@@ -1,9 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { CheckoutSteps } from "../Cart/CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
 import { Metadata } from "../layout/Metadata";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { Button, Typography } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 import {
   getOrderDetails,
   clearErrors,
@@ -17,7 +16,7 @@ import { UPDATE_ORDER_RESET } from "../../constants/orderContants";
 
 interface ConfirmOrderProps {}
 
-export const ProcessOrder: React.FC<ConfirmOrderProps> = ({}) => {
+export const ProcessOrder: React.FC<ConfirmOrderProps> = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();

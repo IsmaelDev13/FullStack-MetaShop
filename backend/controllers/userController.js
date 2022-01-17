@@ -7,7 +7,7 @@ const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
 //Register a User
-exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+exports.registerUser = catchAsyncErrors(async (req, res) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
@@ -49,7 +49,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Logout
-exports.logout = catchAsyncErrors(async (req, res, next) => {
+exports.logout = catchAsyncErrors(async (req, res) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
@@ -82,7 +82,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: `MetaShop Password Recovery`,
+      subject: "MetaShop Password Recovery",
       message,
     });
 
@@ -134,7 +134,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 //Get User Detail
-exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+exports.getUserDetails = catchAsyncErrors(async (req, res) => {
   const user = await User.findById(req.user.id);
 
   res.status(200).json({
@@ -152,15 +152,15 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Old password is incorrect", 401));
   }
   if (req.body.newPassword !== req.body.confirmPassword) {
+    user.password = req.body.newPassword;
   }
-  user.password = req.body.newPassword;
 
   await user.save();
   sendToken(user, 200, res);
 });
 
 //Update User Profile
-exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+exports.updateProfile = catchAsyncErrors(async (req, res) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
@@ -185,6 +185,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
@@ -196,7 +197,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Get all users --admin
-exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
+exports.getAllUsers = catchAsyncErrors(async (req, res) => {
   const users = await User.find();
 
   res.status(200).json({
@@ -222,7 +223,7 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Update User Role --Admin
-exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+exports.updateUserRole = catchAsyncErrors(async (req, res) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,

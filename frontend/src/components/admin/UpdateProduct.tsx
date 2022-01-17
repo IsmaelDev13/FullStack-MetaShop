@@ -76,7 +76,16 @@ export const UpdateProduct: React.FC<NewProductProps> = ({ history }) => {
       history.push("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, isUpdated, productId, product, updateError]);
+  }, [
+    dispatch,
+    alert,
+    error,
+    isUpdated,
+    productId,
+    product,
+    updateError,
+    history,
+  ]);
 
   const updateProductSubmitHandler = (e: any) => {
     e.preventDefault();

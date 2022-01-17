@@ -6,9 +6,7 @@ interface ReviewCardProps {
 }
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
-  const { user, loading, isAuthenticated } = useSelector(
-    (state: any) => state.user
-  );
+  const { user } = useSelector((state: any) => state.user);
   const options: any = {
     size: "large",
     value: review.rating,

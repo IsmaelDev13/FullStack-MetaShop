@@ -7,10 +7,9 @@ import { ProductCard } from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
 import Slider from "@mui/material/Slider";
 import { useAlert } from "react-alert";
-import Typography from "@mui/material/Typography";
 import { Metadata } from "../layout/Metadata";
 import { Button } from "@mui/material";
-import { ArrowsExpandIcon, ArrowSmUpIcon } from "@heroicons/react/outline";
+import { ArrowSmUpIcon } from "@heroicons/react/outline";
 import { ArrowSmDownIcon } from "@heroicons/react/solid";
 
 const categories = [

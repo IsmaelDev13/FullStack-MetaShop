@@ -7,7 +7,7 @@ import Person from "@mui/icons-material/Person";
 import MailOutline from "@mui/icons-material/MailOutline";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { Sidebar } from "./Sidebar";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { UPDATE_USER_RESET } from "../../constants/userConstants";
 import {
   getUserDetails,
@@ -61,7 +61,7 @@ export const UpdateUser: React.FC<NewProductProps> = ({ history }) => {
       history.push("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, isUpdated, updateError, user, userId]);
+  }, [dispatch, alert, error, isUpdated, updateError, user, userId, history]);
 
   const updateUserSubmitHandler = (e: any) => {
     e.preventDefault();

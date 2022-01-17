@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 class ApiFeatures {
   constructor(query, queryStr) {
     this.query = query;

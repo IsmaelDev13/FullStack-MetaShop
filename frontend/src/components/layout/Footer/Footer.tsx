@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://github.com/IsmaelDev13"
-          className="px-2 flex"
+          className="px-2 flex" rel="noreferrer"
         >
           <GitHub className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           GitHub
@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://www.facebook.com/people/Ismael-Diaz/100070763821353/"
-          className="px-2 flex"
+          className="px-2 flex" rel="noreferrer"
         >
           <Facebook className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           Facebook
@@ -39,7 +39,7 @@ export const Footer: React.FC<FooterProps> = () => {
         <a
           target="_blank"
           href="https://www.linkedin.com/in/ismaeldev13/"
-          className="px-2 flex"
+          className="px-2 flex" rel="noreferrer"
         >
           <LinkedIn className="transition transform ease-in-out duration-150 hover:scale-105 hover:text-white" />
           LinkedIn

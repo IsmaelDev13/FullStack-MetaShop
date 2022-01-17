@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
 import { Metadata } from "../layout/Metadata";
-import PinDropIcon from "@mui/icons-material/PinDrop";
 import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import PublicIcon from "@mui/icons-material/Public";
@@ -11,9 +10,7 @@ import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStati
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
 import { CheckoutSteps } from "./CheckoutSteps";
-import { useNavigate } from "react-router-dom";
 import PinDrop from "@mui/icons-material/PinDrop";
-import axios from "axios";
 
 interface ShippingProps {
   history: any;

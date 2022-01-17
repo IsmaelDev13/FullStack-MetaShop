@@ -45,7 +45,7 @@ export const UsersList: React.FC<ProductListProps> = ({ history }) => {
       dispatch({ type: DELETE_USER_RESET });
     }
     dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError, isDeleted, message]);
+  }, [dispatch, alert, error, deleteError, isDeleted, message, history]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },

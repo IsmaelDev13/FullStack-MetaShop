@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React, { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Metadata } from "../layout/Metadata";
 import { Sidebar } from "./Sidebar";
@@ -46,7 +46,7 @@ export const OrdersList: React.FC<ProductListProps> = ({ history }) => {
       dispatch({ type: DELETE_ORDER_RESET });
     }
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+  }, [dispatch, alert, error, deleteError, isDeleted, history]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },

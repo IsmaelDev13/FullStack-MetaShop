@@ -7,11 +7,10 @@ import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Metadata } from "../layout/Metadata";
 import LaunchIcon from "@mui/icons-material/Launch";
-import { Typography } from "@mui/material";
 
 interface MyOrdersProps {}
 
-export const MyOrders: React.FC<MyOrdersProps> = ({}) => {
+export const MyOrders: React.FC<MyOrdersProps> = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { loading, error, orders } = useSelector(

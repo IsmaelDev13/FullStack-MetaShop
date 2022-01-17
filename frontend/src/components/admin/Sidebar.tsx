@@ -9,7 +9,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 
-export const Sidebar = ({}) => {
+export const Sidebar = () => {
   return (
     <div className="flex flex-col bg-gray-100 items-center m-10  p-10 rounded-md shadow-md ">
       <Link to="/">

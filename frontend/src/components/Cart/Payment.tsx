@@ -1,4 +1,4 @@
-import { FormEvent, Fragment, useEffect, useRef, useState } from "react";
+import { FormEvent, Fragment, useEffect, useRef } from "react";
 import { CheckoutSteps } from "./CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import { Metadata } from "../layout/Metadata";
