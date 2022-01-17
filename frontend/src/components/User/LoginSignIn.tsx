@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import { Loader } from "../layout/Loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -42,7 +43,6 @@ export const LoginSignIn: React.FC<LoginSignInProps> = ({ history }) => {
   const loginSubmit = (e: any) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
-    console.log("Login Form Submitted");
   };
   const registerSubmit = (e: any) => {
     e.preventDefault();

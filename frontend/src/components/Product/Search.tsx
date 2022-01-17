@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Fragment, useState } from "react";
 import { Metadata } from "../layout/Metadata";
 
