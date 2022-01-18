@@ -20,7 +20,7 @@ jobs:
       - name: Lint
         run: npm run eslint
       - name: React-Scripts
-        run: npm install react-scripts --prefix frontend
+        run: npm install react-scripts --prefix frontend --no-audit --no-fund --no-optional
       - name: Build
         run: npm run build
       - name: test e2e

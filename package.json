@@ -10,9 +10,9 @@
     "eslint": "eslint .",
     "dev": "nodemon backend/server.js",
     "cypress:open": "cypress open",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend --no-audit --no-fund --no-optional",
     "test:e2e": "npx cypress run",
-    "build": "cross-env NODE_ENV=PRODUCTION npm run build --prefix frontend  "
+    "build": "cross-env NODE_ENV=PRODUCTION npm run build --prefix frontend --no-audit --no-fund --no-optional "
   },
   "eslintConfig": {
     "env": {
