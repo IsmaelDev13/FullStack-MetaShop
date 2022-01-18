@@ -20,7 +20,7 @@ jobs:
       - name: Lint
         run: npm run eslint
       - name: Install frontend dependencies
-        run: npm run install --prefix frontend --no-audit --no-optional --no-fund
+        run: npm install --prefix frontend --no-audit --no-optional --no-fund
       - name: Build
         run: npm run build
       - name: test e2e
