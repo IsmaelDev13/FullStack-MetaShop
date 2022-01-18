@@ -35,9 +35,16 @@ jobs:
     needs: [lint]
     runs-on: windows-2019
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
       - name: Install frontend dependencies
         run: npm install --prefix frontend --no-audit --no-optional --no-fund
   build:
+    needs: [frontend_dependencies]
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
