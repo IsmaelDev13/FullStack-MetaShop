@@ -12,7 +12,7 @@
     "cypress:open": "cypress open",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend --no-audit --no-fund --no-optional",
     "test:e2e": "npx cypress run",
-    "build": "cross-env NODE_ENV=test npm run build frontend --no-audit --no-fund --no-optional "
+    "build": "cross-env NODE_ENV=test npm run build --prefix frontend --no-audit --no-fund --no-optional "
   },
   "eslintConfig": {
     "env": {
