@@ -31,18 +31,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run eslint
-  frontend_dependencies:
-    needs: [lint]
-    runs-on: windows-2019
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "16"
-      - name: Install frontend dependencies
-        run: npm install --prefix frontend --no-audit --no-optional --no-fund
+
   build:
     needs: [frontend_dependencies]
     runs-on: windows-2019
@@ -61,6 +50,8 @@ jobs:
         with:
           name: build
           path: build
+      - name: Install frontend dependencies
+        run: npm install --prefix frontend --no-audit --no-optional --no-fund
   e2e:
     needs: [lint, build]
     runs-on: windows-2019
