@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: build
-          path: build
+          path: frontend/build
   e2e:
     needs: [lint, build]
     runs-on: windows-2019
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build
-          path: build
+          path: frontend/build
       - name: test e2e
         uses: cypress-io/github-action@v2
         with:
