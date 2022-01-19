@@ -33,7 +33,7 @@ jobs:
         run: npm run eslint
 
   build:
-    needs: [frontend_dependencies]
+    needs: [lint]
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
