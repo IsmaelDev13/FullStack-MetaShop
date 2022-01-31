@@ -32,7 +32,7 @@ export const Home = () => {
           <div className="h-full  mx-auto ">
             <Banner />
             {/* <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto p-10 space-x-10"> */}
-            <div className="flex overflow-y-hidden overflow-x-scroll scrollbar-hide">
+            <div className="flex max-h-[36vmax] overflow-y-hidden overflow-x-scroll scrollbar-hide">
               {products &&
                 products.map(
                   (product: {

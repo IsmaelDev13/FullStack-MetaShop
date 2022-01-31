@@ -16,6 +16,7 @@ import { ArrowSmDownIcon } from "@heroicons/react/solid";
 const categories = [
   "Laptop",
   "MacBook",
+  "T-Shirt",
   "Tops",
   "Bottom",
   "Camera",
@@ -28,7 +29,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 200]);
+  const [price, setPrice] = useState([0, 2000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState<any>(0);
   const {

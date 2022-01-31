@@ -23,9 +23,9 @@ export const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="flex p-10 m-10 bg-white border hover:border-black ">
       <Link to={`/product/${product._id}`}>
-        <div className="relative  group">
+        <div className="relative group">
           <img
-            className="min-h-[20vmax] min-w-[20vmax] object-cover"
+            className="max-h-[20vmax] min-w-[20vmax] object-cover"
             // className="max-h-[200px] object-contain mr-[10px] w-full transition-transform duration-500"
             src={product.images[0].url}
             alt={product.name}

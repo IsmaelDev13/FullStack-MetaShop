@@ -17,6 +17,7 @@ const categories = [
   "Laptop",
   "MacBook",
   "Tops",
+  "T-shirt",
   "Bottom",
   "Camera",
   "SmartPhones",
